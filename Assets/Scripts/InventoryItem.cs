@@ -11,6 +11,7 @@ public class InventoryItem : MonoBehaviour
     [HideInInspector] public Vector3Int CellIndex;
     [SerializeField] private SpriteRenderer m_image;
     [SerializeField] private SpriteRenderer m_inBounds;
+    [SerializeField] private SpriteRenderer m_outline;
 
     public bool[, ] m_shape = new bool[5, 5];
     //le point de rotation est celui du centre
@@ -98,22 +99,32 @@ public class InventoryItem : MonoBehaviour
         }
     }
 
+    private void UpdateOutline(bool p_outlined)
+    {
+        m_outline.gameObject.SetActive(p_outlined);
+    }
+
     void Update()
     {
+        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
+
+        var collisions = Physics2D.OverlapPointAll(mousePosition);
+        bool mouseOverObject = false;
+        if (collisions.Contains(m_collider))
+        {
+            mouseOverObject = true;
+        }
+
         if (Input.GetMouseButton(0))
         {
-            if (!PlayerSelection.Instance.HasASelectedItem)
+            if (!PlayerSelection.Instance.HasASelectedItem && mouseOverObject)
             {
-                var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                var flatPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
-
-                var collisions = Physics2D.OverlapPointAll(flatPosition);
-                if (collisions.Contains(m_collider))
-                {
-                    PlayerSelection.Instance.SetSelectedItem(this);
-                }
+                PlayerSelection.Instance.SetSelectedItem(this);
             }
         }
+
+        UpdateOutline(mouseOverObject);
 
         if (PlayerSelection.Instance.SelectedItem != this)
             return;
@@ -124,8 +135,7 @@ public class InventoryItem : MonoBehaviour
         }
 
         // Mouse follow
-        var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(point.x, point.y, 0f);
+        transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
 
         // Check if over inventory
         var inventoryBounds = m_inventory.GetBounds();

@@ -80,6 +80,7 @@ MonoBehaviour:
   CellIndex: {x: 0, y: 0, z: 0}
   m_image: {fileID: 560825680356163064}
   m_inBounds: {fileID: 2019566048013306378}
+  m_outline: {fileID: 2019566048022947709}
   m_id: 0
 --- !u!50 &2019566046933196482
 Rigidbody2D:
