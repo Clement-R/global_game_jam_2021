@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 286871640}
   - component: {fileID: 286871639}
   m_Layer: 0
-  m_Name: InBounds
+  m_Name: ShapeOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,7 +446,7 @@ Transform:
   m_GameObject: {fileID: 286871638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528353541}
   m_RootOrder: 1
@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 492505618}
   - component: {fileID: 492505617}
   m_Layer: 0
-  m_Name: InBounds (1)
+  m_Name: ShapeOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -715,7 +715,7 @@ Transform:
   m_GameObject: {fileID: 492505616}
   m_LocalRotation: {x: 0, y: -0.02596334, z: -0, w: -0.99966294}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2000002, y: 1.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1005030171}
   m_RootOrder: 5
@@ -1174,8 +1174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CellIndex: {x: 0, y: 0, z: 0}
   m_image: {fileID: 1136491116}
-  m_inBounds: {fileID: 1831786187}
   m_outline: {fileID: 873333296}
+  m_shapeOutline: {fileID: 1831786187}
+  m_shapeBaseColor: {r: 1, g: 1, b: 1, a: 1}
+  m_shapeInvalidColor: {r: 1, g: 0.25943398, b: 0.25943398, a: 1}
   m_id: 0
 --- !u!60 &800963442
 PolygonCollider2D:
@@ -1470,8 +1472,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CellIndex: {x: 0, y: 0, z: 0}
   m_image: {fileID: 1270635154}
-  m_inBounds: {fileID: 492505617}
   m_outline: {fileID: 149049119}
+  m_shapeOutline: {fileID: 492505617}
+  m_shapeBaseColor: {r: 1, g: 1, b: 1, a: 1}
+  m_shapeInvalidColor: {r: 1, g: 0.3160377, b: 0.3160377, a: 1}
   m_id: 0
 --- !u!60 &1005030170
 PolygonCollider2D:
@@ -2445,8 +2449,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CellIndex: {x: 0, y: 0, z: 0}
   m_image: {fileID: 4070914}
-  m_inBounds: {fileID: 286871639}
   m_outline: {fileID: 1296985375}
+  m_shapeOutline: {fileID: 286871639}
+  m_shapeBaseColor: {r: 1, g: 1, b: 1, a: 1}
+  m_shapeInvalidColor: {r: 1, g: 0.2216981, b: 0.2216981, a: 1}
   m_id: 0
 --- !u!61 &1528353540
 BoxCollider2D:
@@ -2584,7 +2590,7 @@ GameObject:
   - component: {fileID: 1831786188}
   - component: {fileID: 1831786187}
   m_Layer: 0
-  m_Name: InBounds (1)
+  m_Name: ShapeOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2650,7 +2656,7 @@ Transform:
   m_GameObject: {fileID: 1831786186}
   m_LocalRotation: {x: 0, y: -0.02596334, z: -0, w: -0.99966294}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2000002, y: 1.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 800963443}
   m_RootOrder: 4

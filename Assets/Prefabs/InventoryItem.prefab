@@ -193,8 +193,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CellIndex: {x: 0, y: 0, z: 0}
   m_image: {fileID: 5307281862222251404}
-  m_inBounds: {fileID: 2019566048013306378}
   m_outline: {fileID: 2019566048022947709}
+  m_shapeOutline: {fileID: 2019566048013306378}
+  m_shapeBaseColor: {r: 1, g: 1, b: 1, a: 1}
+  m_shapeInvalidColor: {r: 1, g: 0.2971698, b: 0.2971698, a: 1}
   m_id: 0
 --- !u!50 &2019566046933196482
 Rigidbody2D:
@@ -228,7 +230,7 @@ GameObject:
   - component: {fileID: 2019566048013306381}
   - component: {fileID: 2019566048013306378}
   m_Layer: 0
-  m_Name: InBounds
+  m_Name: ShapeOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,8 +10,12 @@ public class InventoryItem : MonoBehaviour
 {
     [HideInInspector] public Vector3Int CellIndex;
     [SerializeField] private SpriteRenderer m_image;
-    [SerializeField] private SpriteRenderer m_inBounds;
     [SerializeField] private SpriteRenderer m_outline;
+
+    [Header("Shape outline")]
+    [SerializeField] private SpriteRenderer m_shapeOutline;
+    [SerializeField] private Color m_shapeBaseColor;
+    [SerializeField] private Color m_shapeInvalidColor;
 
     public bool[, ] m_shape = new bool[5, 5];
     //le point de rotation est celui du centre
@@ -104,6 +108,12 @@ public class InventoryItem : MonoBehaviour
         m_outline.gameObject.SetActive(p_outlined);
     }
 
+    private void UpdateShapeOutline(bool p_isVisible, bool p_isValid)
+    {
+        m_shapeOutline.gameObject.SetActive(p_isVisible);
+        m_shapeOutline.color = p_isValid ? m_shapeBaseColor : m_shapeInvalidColor;
+    }
+
     void Update()
     {
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -124,44 +134,56 @@ public class InventoryItem : MonoBehaviour
             }
         }
 
-        UpdateOutline(mouseOverObject);
-
         if (PlayerSelection.Instance.SelectedItem != this)
+        {
+            UpdateOutline(mouseOverObject);
             return;
+        }
 
         if (Input.GetMouseButtonDown(1))
         {
             transform.Rotate(new Vector3(0f, 0f, -90f));
         }
 
-        // Mouse follow
-        transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
-
         // Check if over inventory
         var inventoryBounds = m_inventory.GetBounds();
         var overInventory = inventoryBounds.Contains(transform.position);
 
+        bool canPutInInventory = true;
+
+        bool colliding = false;
+        if (overInventory && m_isColliding)
+        {
+            canPutInInventory = false;
+            colliding = true;
+        }
+
+        if (overInventory)
+        {
+            CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
+            m_shapeOutline.transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
+        }
+        else
+        {
+            m_shapeOutline.transform.position = Vector3.zero;
+        }
+
+        bool notInBox = false;
+        var bounds = new Bounds(m_shapeOutline.transform.position, m_collider.bounds.size);
+        if (!inventoryBounds.ContainBounds(bounds))
+        {
+            canPutInInventory = false;
+            notInBox = true;
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
-            bool canPutInInventory = true;
-
-            bool colliding = false;
-            if (overInventory && m_isColliding)
-            {
-                canPutInInventory = false;
-                colliding = true;
-            }
-
-            bool notInBox = false;
-            if (!inventoryBounds.ContainBounds(m_collider.bounds))
-            {
-                canPutInInventory = false;
-                notInBox = true;
-            }
-
             if (canPutInInventory)
             {
+                CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
+                transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
                 transform.SetParent(m_inventory.transform);
+                m_shapeOutline.transform.localPosition = Vector3.zero;
             }
             else
             {
@@ -171,13 +193,14 @@ public class InventoryItem : MonoBehaviour
 
             PlayerSelection.Instance.SetSelectedItem(null);
         }
-
-        m_inBounds.gameObject.SetActive(overInventory);
-
-        if (overInventory)
+        else
         {
-            CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
-            transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
+            // Mouse follow
+            transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
         }
+
+        UpdateShapeOutline(overInventory, canPutInInventory && !colliding);
+        if (overInventory)
+            UpdateOutline(false);
     }
 }
