@@ -65,8 +65,8 @@ public class Inventory : MonoBehaviour
     {
         var localPos = transform.InverseTransformPoint(p_position);
         var gridIndex = new Vector3Int(
-            Mathf.RoundToInt(localPos.x / m_cellSize),
-            Mathf.RoundToInt(localPos.y / m_cellSize),
+            (int) Mathf.Floor(localPos.x / m_cellSize) + 1,
+            (int) Mathf.Floor(localPos.y / m_cellSize) + 1,
             0
         );
         return gridIndex;
