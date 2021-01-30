@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private Vector2Int m_gridSize;
     [SerializeField] private float m_cellSize;
+    [SerializeField] private LineRenderer m_linePrefab;
     [SerializeField] private List<Vector2> m_coords = new List<Vector2>();
     [SerializeField] private Objet_id[, ] m_inventory = new Objet_id[4, 4]; //the dimentions are adjustable
 
@@ -26,27 +27,25 @@ public class Inventory : MonoBehaviour
 
     private void DrawGrid()
     {
+        var halfCellSize = m_cellSize / 2f;
         foreach (var point in m_coords)
         {
-            var go = new GameObject();
-            go.transform.SetParent(transform);
-            go.transform.position = GetPositionFromCellIndex(Vector3Int.FloorToInt(point));
+            var lr = Instantiate(m_linePrefab);
+            lr.transform.SetParent(transform);
+            lr.transform.localPosition = point;
 
-            List<Vector2> positions = new List<Vector2>()
-            {
-                Vector2.right,
-                Vector2.up,
-                Vector2.left,
-                Vector2.down
-            };
+            List<Vector3> pos = new List<Vector3>();
+            pos.Add(new Vector3(-halfCellSize, -halfCellSize, 0f));
+            pos.Add(new Vector3(halfCellSize, -halfCellSize, 0f));
+            pos.Add(new Vector3(halfCellSize, halfCellSize, 0f));
+            pos.Add(new Vector3(-halfCellSize, halfCellSize, 0f));
+            pos.Add(new Vector3(-halfCellSize, -halfCellSize - lr.endWidth / 2f, 0f));
 
-            for (int i = 0; i < 4; i++)
-            {
-                var line = new GameObject();
-                line.transform.SetParent(go.transform);
-                var lr = line.AddComponent<LineRenderer>();
-                // lr.SetPositions();
-            }
+            lr.positionCount = 0;
+            lr.SetPositions(new Vector3[0]);
+
+            lr.positionCount = pos.Count;
+            lr.SetPositions(pos.ToArray());
         }
     }
 
@@ -150,7 +149,7 @@ public class Inventory : MonoBehaviour
                 float y = Mathf.Abs(j) == 1 ? j * halfCellSize : (-Mathf.Sign(j) * halfCellSize) + j * m_cellSize;
 
                 Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(transform.position + new Vector3(x, y, 0f), 0.25f);
+                Gizmos.DrawWireSphere(transform.position + new Vector3(x, y, 0f), m_cellSize / 4f);
 
                 m_coords.Add(new Vector2(x, y));
 
