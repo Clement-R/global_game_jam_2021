@@ -29,11 +29,8 @@ public class Inventory : MonoBehaviour
         foreach (var point in m_coords)
         {
             var go = new GameObject();
-            go.transform.position = transform.position + new Vector3(
-                point.x * m_cellSize,
-                point.y * m_cellSize,
-                0f
-            );
+            go.transform.SetParent(transform);
+            go.transform.position = GetPositionFromCellIndex(Vector3Int.FloorToInt(point));
 
             List<Vector2> positions = new List<Vector2>()
             {

@@ -44,6 +44,9 @@ TagManager:
   - name: Inventory
     uniqueID: 3643597447
     locked: 0
+  - name: Grid
+    uniqueID: 3275897053
+    locked: 0
   - name: InventoryItem
     uniqueID: 3115787359
     locked: 0
