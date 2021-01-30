@@ -111,19 +111,35 @@ public class Inventory : MonoBehaviour
     public Vector3Int GetCellIndexFromPosition(Vector3 p_position)
     {
         var localPos = transform.InverseTransformPoint(p_position);
+        var offsetlocalPos = localPos + new Vector3(Mathf.Sign(localPos.x), Mathf.Sign(localPos.y), 0f) * m_cellSize / 2f;
+
+        var flooredPos = new Vector2(
+            (int) Mathf.Sign(offsetlocalPos.x) * Mathf.FloorToInt(Mathf.Abs(offsetlocalPos.x)),
+            (int) Mathf.Sign(offsetlocalPos.y) * Mathf.FloorToInt(Mathf.Abs(offsetlocalPos.y))
+        );
+
         var gridIndex = new Vector3Int(
-            (int) Mathf.Floor(localPos.x / m_cellSize) + 1,
-            (int) Mathf.Floor(localPos.y / m_cellSize) + 1,
+            (int) Mathf.Sign(flooredPos.x) * Mathf.FloorToInt(Mathf.Abs(flooredPos.x)),
+            (int) Mathf.Sign(flooredPos.y) * Mathf.FloorToInt(Mathf.Abs(flooredPos.y)),
             0
         );
+
         return gridIndex;
+    }
+
+    public Vector3Int MouseCellIndex;
+    private void Update()
+    {
+        var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        point = new Vector3(point.x, point.y, 0f);
+        MouseCellIndex = GetCellIndexFromPosition(point);
     }
 
     public Vector3 GetPositionFromCellIndex(Vector3Int p_cellIndex)
     {
         return new Vector3(
-            transform.position.x + (p_cellIndex.x * m_cellSize) - m_cellSize * 0.5f,
-            transform.position.y + (p_cellIndex.y * m_cellSize) - m_cellSize * 0.5f,
+            transform.position.x + (p_cellIndex.x * m_cellSize),
+            transform.position.y + (p_cellIndex.y * m_cellSize),
             0f
         );
     }
@@ -132,29 +148,43 @@ public class Inventory : MonoBehaviour
     {
         Gizmos.color = Color.blue;
 
-        int halfWidth = m_gridSize.x / 2;
-        int halfHeight = m_gridSize.y / 2;
-
         var halfCellSize = m_cellSize / 2f;
 
         m_coords.Clear();
 
-        for (int i = -halfWidth; i <= halfWidth; i++)
-        {
-            for (int j = -halfHeight; j <= halfHeight; j++)
-            {
-                if (i == 0 || j == 0) continue;
+        int width = m_gridSize.x;
+        int height = m_gridSize.y;
 
-                float x = Mathf.Abs(i) == 1 ? i * halfCellSize : (-Mathf.Sign(i) * halfCellSize) + i * m_cellSize;
-                float y = Mathf.Abs(j) == 1 ? j * halfCellSize : (-Mathf.Sign(j) * halfCellSize) + j * m_cellSize;
+        Vector3 topLeft = transform.position + new Vector3(
+            m_gridSize.x / 2f * m_cellSize * -1f,
+            m_gridSize.y / 2f * m_cellSize,
+            0f
+        );
+
+        // Gizmos.DrawWireSphere(topLeft, 0.5f);
+
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                float x = (i * m_cellSize) + m_cellSize / 2f;
+                float y = (j * -m_cellSize) - m_cellSize / 2f;
+
+                var position = topLeft + new Vector3(
+                    x,
+                    y,
+                    0f
+                );
 
                 Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(transform.position + new Vector3(x, y, 0f), m_cellSize / 4f);
+                Gizmos.DrawWireSphere(position, m_cellSize / 4f);
 
-                m_coords.Add(new Vector2(x, y));
+                var localPosition = transform.InverseTransformPoint(position);
+
+                m_coords.Add(new Vector2(Mathf.Round(localPosition.x), Mathf.Round(localPosition.y)));
 
                 Gizmos.color = Color.blue;
-                Gizmos.DrawWireCube(transform.position + new Vector3(x, y, 0f), Vector3.one * m_cellSize);
+                Gizmos.DrawWireCube(position, Vector3.one * m_cellSize);
             }
         }
 
