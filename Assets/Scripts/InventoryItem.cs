@@ -134,11 +134,14 @@ public class InventoryItem : MonoBehaviour
             }
         }
 
+        // If item is not selected, stop there
         if (PlayerSelection.Instance.SelectedItem != this)
         {
             UpdateOutline(mouseOverObject);
             return;
         }
+
+        transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -161,15 +164,41 @@ public class InventoryItem : MonoBehaviour
         if (overInventory)
         {
             CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
-            m_shapeOutline.transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
+            // m_shapeOutline.transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
+            transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
         }
         else
         {
-            m_shapeOutline.transform.position = Vector3.zero;
+            // m_shapeOutline.transform.position = Vector3.zero;
         }
 
         bool notInBox = false;
-        var bounds = new Bounds(m_shapeOutline.transform.position, m_collider.bounds.size);
+        // var bounds = new Bounds(m_inventory.GetPositionFromCellIndex(CellIndex), m_collider.bounds.size);
+        var bounds = m_collider.bounds;
+
+        Debug.Log(bounds.center);
+        Debug.DrawLine(
+            bounds.center + Vector3.right * 0.25f - Vector3.up * 0.25f,
+            bounds.center - Vector3.right * 0.25f + Vector3.up * 0.25f,
+            Color.green
+        );
+        Debug.DrawLine(
+            bounds.center - Vector3.right * 0.25f - Vector3.up * 0.25f,
+            bounds.center + Vector3.right * 0.25f + Vector3.up * 0.25f,
+            Color.magenta
+        );
+
+        Debug.DrawLine(
+            bounds.center - bounds.size / 2f,
+            bounds.center + bounds.size / 2f,
+            Color.blue
+        );
+        Debug.DrawLine(
+            bounds.center + new Vector3(-bounds.size.x / 2f, bounds.size.y / 2f),
+            bounds.center + new Vector3(bounds.size.x / 2f, -bounds.size.y / 2f),
+            Color.red
+        );
+
         if (!inventoryBounds.ContainBounds(bounds))
         {
             canPutInInventory = false;
@@ -196,7 +225,7 @@ public class InventoryItem : MonoBehaviour
         else
         {
             // Mouse follow
-            transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
+            // transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
         }
 
         UpdateShapeOutline(overInventory, canPutInInventory && !colliding);

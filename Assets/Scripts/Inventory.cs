@@ -165,13 +165,13 @@ public class Inventory : MonoBehaviour
         }
 
         int x = closest.x > 0 ? Mathf.CeilToInt(closest.x) : Mathf.FloorToInt(closest.x);
-        if (closest.x > 0 && closest.x < m_cellSize / 2f)
+        if (closest.x >= 0 && closest.x <= m_cellSize / 2f)
         {
             x = 0;
         }
 
         int y = closest.y > 0 ? Mathf.CeilToInt(closest.y) : Mathf.FloorToInt(closest.y);
-        if (closest.y > 0 && closest.y < m_cellSize / 2f)
+        if (closest.y >= 0 && closest.y <= m_cellSize / 2f)
         {
             y = 0;
         }
