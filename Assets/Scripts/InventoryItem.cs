@@ -59,6 +59,13 @@ public class InventoryItem : MonoBehaviour
 
     private void ResetPositionAndRotation()
     {
+        StartCoroutine(_DelayedReset());
+    }
+
+    private IEnumerator _DelayedReset()
+    {
+        yield return null;
+
         transform.SetParent(m_baseParent);
         transform.position = m_basePosition;
         transform.rotation = m_baseRotation;
@@ -127,14 +134,19 @@ public class InventoryItem : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             bool canPutInInventory = true;
+
+            bool colliding = false;
             if (overInventory && m_isColliding)
             {
                 canPutInInventory = false;
+                colliding = true;
             }
 
+            bool notInBox = false;
             if (!inventoryBounds.ContainBounds(m_collider.bounds))
             {
                 canPutInInventory = false;
+                notInBox = true;
             }
 
             if (canPutInInventory)
@@ -143,6 +155,7 @@ public class InventoryItem : MonoBehaviour
             }
             else
             {
+                Debug.Log($"Can't put in inventory Not in box : {notInBox} - Colliding : {colliding}");
                 ResetPositionAndRotation();
             }
 

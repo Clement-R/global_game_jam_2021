@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Vector2Int m_gridSize;
     [SerializeField] private float m_cellSize;
     [SerializeField] private LineRenderer m_linePrefab;
-    [SerializeField] private List<Vector2> m_coords = new List<Vector2>();
+    [SerializeField] private List<Vector3> m_gridCellsPositions = new List<Vector3>();
     [SerializeField] private Objet_id[, ] m_inventory = new Objet_id[4, 4]; //the dimentions are adjustable
 
     private static Inventory m_instance = null;
@@ -56,7 +56,7 @@ public class Inventory : MonoBehaviour
     private void DrawGrid()
     {
         var halfCellSize = m_cellSize / 2f;
-        foreach (var point in m_coords)
+        foreach (var point in m_gridCellsPositions)
         {
             var lr = Instantiate(m_linePrefab);
             lr.transform.SetParent(transform);
@@ -136,19 +136,49 @@ public class Inventory : MonoBehaviour
         );
     }
 
+    private void Update()
+    {
+        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var flatPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
+        MouseCell = GetCellIndexFromPosition(flatPosition);
+        MousePos = flatPosition;
+    }
+    public Vector3Int MouseCell;
+    public Vector3 MousePos;
+
     public Vector3Int GetCellIndexFromPosition(Vector3 p_position)
     {
         var localPos = transform.InverseTransformPoint(p_position);
-        var offsetlocalPos = localPos + new Vector3(Mathf.Sign(localPos.x), Mathf.Sign(localPos.y), 0f) * m_cellSize / 2f;
+        localPos = new Vector3(localPos.x, localPos.y, 0);
 
-        var flooredPos = new Vector2(
-            (int) Mathf.Sign(offsetlocalPos.x) * Mathf.FloorToInt(Mathf.Abs(offsetlocalPos.x)),
-            (int) Mathf.Sign(offsetlocalPos.y) * Mathf.FloorToInt(Mathf.Abs(offsetlocalPos.y))
-        );
+        // Get closest point
+        float minDistance = float.PositiveInfinity;
+        Vector3 closest = Vector3.zero;
+        foreach (var position in m_gridCellsPositions)
+        {
+            var distance = Vector3.Distance(localPos, position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closest = position;
+            }
+        }
+
+        int x = closest.x > 0 ? Mathf.CeilToInt(closest.x) : Mathf.FloorToInt(closest.x);
+        if (closest.x > 0 && closest.x < m_cellSize / 2f)
+        {
+            x = 0;
+        }
+
+        int y = closest.y > 0 ? Mathf.CeilToInt(closest.y) : Mathf.FloorToInt(closest.y);
+        if (closest.y > 0 && closest.y < m_cellSize / 2f)
+        {
+            y = 0;
+        }
 
         var gridIndex = new Vector3Int(
-            (int) Mathf.Sign(flooredPos.x) * Mathf.FloorToInt(Mathf.Abs(flooredPos.x)),
-            (int) Mathf.Sign(flooredPos.y) * Mathf.FloorToInt(Mathf.Abs(flooredPos.y)),
+            x,
+            y,
             0
         );
 
@@ -169,8 +199,7 @@ public class Inventory : MonoBehaviour
         Gizmos.color = Color.blue;
 
         var halfCellSize = m_cellSize / 2f;
-
-        m_coords.Clear();
+        m_gridCellsPositions.Clear();
 
         int width = m_gridSize.x;
         int height = m_gridSize.y;
@@ -181,14 +210,14 @@ public class Inventory : MonoBehaviour
             0f
         );
 
-        // Gizmos.DrawWireSphere(topLeft, 0.5f);
+        Gizmos.DrawWireSphere(topLeft, m_cellSize / 2f);
 
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                float x = (i * m_cellSize) + m_cellSize / 2f;
-                float y = (j * -m_cellSize) - m_cellSize / 2f;
+                float x = (i * m_cellSize) + (m_cellSize / 2f);
+                float y = (j * -m_cellSize) - (m_cellSize / 2f);
 
                 var position = topLeft + new Vector3(
                     x,
@@ -200,8 +229,7 @@ public class Inventory : MonoBehaviour
                 Gizmos.DrawWireSphere(position, m_cellSize / 4f);
 
                 var localPosition = transform.InverseTransformPoint(position);
-
-                m_coords.Add(new Vector2(Mathf.Round(localPosition.x), Mathf.Round(localPosition.y)));
+                m_gridCellsPositions.Add(localPosition);
 
                 Gizmos.color = Color.blue;
                 Gizmos.DrawWireCube(position, Vector3.one * m_cellSize);
