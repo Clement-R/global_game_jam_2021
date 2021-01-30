@@ -9,9 +9,44 @@ public class Inventory : MonoBehaviour
     [SerializeField] private float m_cellSize;
     [SerializeField] private List<Vector2> m_coords = new List<Vector2>();
 
-    private void Update()
+    private void Start()
     {
+        DrawGrid();
+    }
 
+    private void DrawGrid()
+    {
+        // foreach (var point in m_coords)
+        // {
+        //     var go = new GameObject();
+        //     go.transform.position = transform.position + new Vector3(
+        //         point.x * m_cellSize,
+        //         point.y * m_cellSize,
+        //         0f
+        //     );
+
+        //     List<Vector2> positions = new List<Vector2>(
+        //     {
+        //         Vector2.right
+        //     },
+        //     {
+        //         Vector2.right
+        //     },
+        //     {
+        //         Vector2.right
+        //     },
+        //     {
+        //         Vector2.right
+        //     });
+
+        //     for (int i = 0; i < 4; i++)
+        //     {
+        //         var line = new GameObject();
+        //         line.transform.SetParent(go.transform);
+        //         var lr = line.AddComponent<LineRenderer>();
+        //         // lr.SetPositions();
+        //     }
+        // }
     }
 
     public Bounds GetBounds()
@@ -67,7 +102,7 @@ public class Inventory : MonoBehaviour
                 float y = Mathf.Abs(j) == 1 ? j * halfCellSize : (-Mathf.Sign(j) * halfCellSize) + j * m_cellSize;
 
                 Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(transform.position + new Vector3(x, y, 0f), 0.1f);
+                Gizmos.DrawWireSphere(transform.position + new Vector3(x, y, 0f), 0.25f);
 
                 m_coords.Add(new Vector2(x, y));
 
