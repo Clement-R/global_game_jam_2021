@@ -12,7 +12,7 @@ public class PlayerSelection : MonoBehaviour
     private static PlayerSelection m_instance = null;
     private InventoryItem m_selectedItem = null;
 
-    void Start()
+    void Awake()
     {
         if (m_instance == null)
         {

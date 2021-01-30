@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory Instance => m_instance;
+
     [SerializeField] private Vector2Int m_gridSize;
     [SerializeField] private float m_cellSize;
     [SerializeField] private LineRenderer m_linePrefab;
     [SerializeField] private List<Vector2> m_coords = new List<Vector2>();
     [SerializeField] private Objet_id[, ] m_inventory = new Objet_id[4, 4]; //the dimentions are adjustable
+
+    private static Inventory m_instance = null;
 
     public enum Objet_id
     {
@@ -18,6 +22,18 @@ public class Inventory : MonoBehaviour
         Obj2,
         autre,
         encoreUnAutre
+    }
+
+    void Awake()
+    {
+        if (m_instance == null)
+        {
+            m_instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
@@ -79,7 +95,7 @@ public class Inventory : MonoBehaviour
 
                 if (p_object.m_shape[x, y])
                 {
-                    Vector3Int pos = cellPosition(p_object.m_cellIndex, x, y);
+                    Vector3Int pos = cellPosition(p_object.CellIndex, x, y);
                     if (m_inventory[pos.x, pos.y] != Objet_id.empty)
                     {
                         return false;
@@ -100,7 +116,7 @@ public class Inventory : MonoBehaviour
                 {
                     if (p_object.m_shape[x, y])
                     {
-                        Vector3Int pos = cellPosition(p_object.m_cellIndex, x, y);
+                        Vector3Int pos = cellPosition(p_object.CellIndex, x, y);
                         m_inventory[pos.x, pos.y] = p_object.m_id;
                     }
                 }

@@ -5,30 +5,36 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Collider2D))]
 public class InventoryItem : MonoBehaviour
 {
+    [HideInInspector] public Vector3Int CellIndex;
     [SerializeField] private SpriteRenderer m_image;
-    [SerializeField] private Inventory m_inventory;
     [SerializeField] private SpriteRenderer m_inBounds;
-    [SerializeField] public Vector3Int m_cellIndex;
-    [SerializeField] public Collider2D m_collider;
 
     public bool[, ] m_shape = new bool[5, 5];
     //le point de rotation est celui du centre
     public Inventory.Objet_id m_id;
 
+    private Collider2D m_collider;
     private bool m_isColliding => m_inCollisionWith.Count > 0;
     private HashSet<GameObject> m_inCollisionWith = new HashSet<GameObject>();
 
     private Vector3 m_basePosition;
     private Quaternion m_baseRotation;
     private Transform m_baseParent;
+    private Inventory m_inventory;
 
     void Start()
     {
+        m_inventory = Inventory.Instance;
+
         m_basePosition = transform.position;
         m_baseRotation = transform.rotation;
         m_baseParent = transform.parent;
+
+        m_collider = GetComponent<Collider2D>();
+        m_collider.isTrigger = true;
     }
 
     void rotate() //the main difficulty
@@ -147,8 +153,8 @@ public class InventoryItem : MonoBehaviour
 
         if (overInventory)
         {
-            m_cellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
-            transform.position = m_inventory.GetPositionFromCellIndex(m_cellIndex);
+            CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
+            transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
         }
     }
 }
