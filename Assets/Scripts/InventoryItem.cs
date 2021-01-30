@@ -17,12 +17,19 @@ public class InventoryItem : MonoBehaviour
     //le point de rotation est celui du centre
     public Inventory.Objet_id m_id;
     private bool m_selected;
+
     private bool m_isColliding => m_inCollisionWith.Count > 0;
     private HashSet<GameObject> m_inCollisionWith = new HashSet<GameObject>();
 
+    private Vector3 m_basePosition;
+    private Quaternion m_baseRotation;
+    private Transform m_baseParent;
+
     void Start()
     {
-
+        m_basePosition = transform.position;
+        m_baseRotation = transform.rotation;
+        m_baseParent = transform.parent;
     }
 
     void rotate() //the main difficulty
@@ -43,6 +50,13 @@ public class InventoryItem : MonoBehaviour
             }
         }
         m_shape = newShape;
+    }
+
+    private void ResetPositionAndRotation()
+    {
+        transform.SetParent(m_baseParent);
+        transform.position = m_basePosition;
+        transform.rotation = m_baseRotation;
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -103,17 +117,27 @@ public class InventoryItem : MonoBehaviour
         {
             if (m_selected)
             {
-                bool canUnselect = true;
+                bool canPutInInventory = true;
                 if (overInventory && m_isColliding)
                 {
-                    canUnselect = false;
+                    canPutInInventory = false;
                 }
 
                 if (!inventoryBounds.ContainBounds(m_collider.bounds))
-                    canUnselect = false;
+                {
+                    canPutInInventory = false;
+                }
 
-                if (canUnselect)
-                    m_selected = false;
+                if (canPutInInventory)
+                {
+                    //TODO: Move in inventory
+                }
+                else
+                {
+                    ResetPositionAndRotation();
+                }
+
+                m_selected = false;
             }
         }
 
@@ -124,13 +148,5 @@ public class InventoryItem : MonoBehaviour
             m_cellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
             transform.position = m_inventory.GetPositionFromCellIndex(m_cellIndex);
         }
-    }
-}
-
-public static class BoundsExtension
-{
-    public static bool ContainBounds(this Bounds bounds, Bounds target)
-    {
-        return bounds.Contains(target.min) && bounds.Contains(target.max);
     }
 }
