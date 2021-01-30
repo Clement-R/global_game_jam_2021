@@ -133,8 +133,7 @@ public class InventoryItem : MonoBehaviour
 
             if (canPutInInventory)
             {
-                //TODO: Move in inventory
-
+                transform.SetParent(m_inventory.transform);
             }
             else
             {

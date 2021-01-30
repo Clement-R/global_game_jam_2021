@@ -25,6 +25,18 @@ public class Inventory : MonoBehaviour
         DrawGrid();
     }
 
+    public List<InventoryItem> GetItemsInInventory()
+    {
+        var items = new List<InventoryItem>();
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.TryGetComponent<InventoryItem>(out InventoryItem comp))
+                items.Add(comp);
+        }
+
+        return items;
+    }
+
     private void DrawGrid()
     {
         var halfCellSize = m_cellSize / 2f;
@@ -125,14 +137,6 @@ public class Inventory : MonoBehaviour
         );
 
         return gridIndex;
-    }
-
-    public Vector3Int MouseCellIndex;
-    private void Update()
-    {
-        var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        point = new Vector3(point.x, point.y, 0f);
-        MouseCellIndex = GetCellIndexFromPosition(point);
     }
 
     public Vector3 GetPositionFromCellIndex(Vector3Int p_cellIndex)
