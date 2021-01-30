@@ -16,37 +16,31 @@ public class Inventory : MonoBehaviour
 
     private void DrawGrid()
     {
-        // foreach (var point in m_coords)
-        // {
-        //     var go = new GameObject();
-        //     go.transform.position = transform.position + new Vector3(
-        //         point.x * m_cellSize,
-        //         point.y * m_cellSize,
-        //         0f
-        //     );
+        foreach (var point in m_coords)
+        {
+            var go = new GameObject();
+            go.transform.position = transform.position + new Vector3(
+                point.x * m_cellSize,
+                point.y * m_cellSize,
+                0f
+            );
 
-        //     List<Vector2> positions = new List<Vector2>(
-        //     {
-        //         Vector2.right
-        //     },
-        //     {
-        //         Vector2.right
-        //     },
-        //     {
-        //         Vector2.right
-        //     },
-        //     {
-        //         Vector2.right
-        //     });
+            List<Vector2> positions = new List<Vector2>()
+            {
+                Vector2.right,
+                Vector2.up,
+                Vector2.left,
+                Vector2.down
+            };
 
-        //     for (int i = 0; i < 4; i++)
-        //     {
-        //         var line = new GameObject();
-        //         line.transform.SetParent(go.transform);
-        //         var lr = line.AddComponent<LineRenderer>();
-        //         // lr.SetPositions();
-        //     }
-        // }
+            for (int i = 0; i < 4; i++)
+            {
+                var line = new GameObject();
+                line.transform.SetParent(go.transform);
+                var lr = line.AddComponent<LineRenderer>();
+                // lr.SetPositions();
+            }
+        }
     }
 
     public Bounds GetBounds()
