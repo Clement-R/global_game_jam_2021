@@ -164,19 +164,18 @@ public class InventoryItem : MonoBehaviour
         if (overInventory)
         {
             CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
-            // m_shapeOutline.transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
-            transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
+            m_shapeOutline.transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
         }
         else
         {
-            // m_shapeOutline.transform.position = Vector3.zero;
+            m_shapeOutline.transform.position = Vector3.zero;
         }
 
         bool notInBox = false;
-        // var bounds = new Bounds(m_inventory.GetPositionFromCellIndex(CellIndex), m_collider.bounds.size);
+        CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
+        transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
         var bounds = m_collider.bounds;
 
-        Debug.Log(bounds.center);
         Debug.DrawLine(
             bounds.center + Vector3.right * 0.25f - Vector3.up * 0.25f,
             bounds.center - Vector3.right * 0.25f + Vector3.up * 0.25f,
@@ -225,7 +224,7 @@ public class InventoryItem : MonoBehaviour
         else
         {
             // Mouse follow
-            // transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
+            transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
         }
 
         UpdateShapeOutline(overInventory, canPutInInventory && !colliding);
