@@ -16,7 +16,6 @@ public class InventoryItem : MonoBehaviour
     public bool[, ] m_shape = new bool[5, 5];
     //le point de rotation est celui du centre
     public Inventory.Objet_id m_id;
-    private bool m_selected;
 
     private bool m_isColliding => m_inCollisionWith.Count > 0;
     private HashSet<GameObject> m_inCollisionWith = new HashSet<GameObject>();
@@ -74,20 +73,8 @@ public class InventoryItem : MonoBehaviour
         m_inCollisionWith.Remove(other.gameObject);
     }
 
-    void Update()
+    private void UpdateColorToState()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var flatPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
-
-            var collisions = Physics2D.OverlapPointAll(flatPosition);
-            if (collisions.Contains(m_collider))
-            {
-                m_selected = true;
-            }
-        }
-
         if (m_isColliding)
         {
             m_image.color = Color.red;
@@ -96,11 +83,29 @@ public class InventoryItem : MonoBehaviour
         {
             m_image.color = Color.white;
         }
+    }
 
-        if (!m_selected)
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            if (!PlayerSelection.Instance.HasASelectedItem)
+            {
+                var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                var flatPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
+
+                var collisions = Physics2D.OverlapPointAll(flatPosition);
+                if (collisions.Contains(m_collider))
+                {
+                    PlayerSelection.Instance.SetSelectedItem(this);
+                }
+            }
+        }
+
+        if (PlayerSelection.Instance.SelectedItem != this)
             return;
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetMouseButtonDown(1))
         {
             transform.Rotate(new Vector3(0f, 0f, -90f));
         }
@@ -113,32 +118,30 @@ public class InventoryItem : MonoBehaviour
         var inventoryBounds = m_inventory.GetBounds();
         var overInventory = inventoryBounds.Contains(transform.position);
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonUp(0))
         {
-            if (m_selected)
+            bool canPutInInventory = true;
+            if (overInventory && m_isColliding)
             {
-                bool canPutInInventory = true;
-                if (overInventory && m_isColliding)
-                {
-                    canPutInInventory = false;
-                }
-
-                if (!inventoryBounds.ContainBounds(m_collider.bounds))
-                {
-                    canPutInInventory = false;
-                }
-
-                if (canPutInInventory)
-                {
-                    //TODO: Move in inventory
-                }
-                else
-                {
-                    ResetPositionAndRotation();
-                }
-
-                m_selected = false;
+                canPutInInventory = false;
             }
+
+            if (!inventoryBounds.ContainBounds(m_collider.bounds))
+            {
+                canPutInInventory = false;
+            }
+
+            if (canPutInInventory)
+            {
+                //TODO: Move in inventory
+
+            }
+            else
+            {
+                ResetPositionAndRotation();
+            }
+
+            PlayerSelection.Instance.SetSelectedItem(null);
         }
 
         m_inBounds.gameObject.SetActive(overInventory);
