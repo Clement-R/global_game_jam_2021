@@ -8,6 +8,16 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Vector2Int m_gridSize;
     [SerializeField] private float m_cellSize;
     [SerializeField] private List<Vector2> m_coords = new List<Vector2>();
+    [SerializeField] private Objet_id[, ] m_inventory = new Objet_id[4, 4]; //the dimentions are adjustable
+
+    public enum Objet_id
+    {
+        empty,
+        Obj1,
+        Obj2,
+        autre,
+        encoreUnAutre
+    }
 
     private void Start()
     {
@@ -39,6 +49,53 @@ public class Inventory : MonoBehaviour
                 line.transform.SetParent(go.transform);
                 var lr = line.AddComponent<LineRenderer>();
                 // lr.SetPositions();
+            }
+        }
+    }
+
+    public Vector3Int cellPosition(Vector3Int p_cellIndex, int x, int y)
+    {
+        return new Vector3Int(
+            p_cellIndex.x + x, //je suis pas sur que ca corresponde, faut aller voir
+            p_cellIndex.y + y,
+            0
+        );
+    }
+
+    private bool isAddingPossible(InventoryItem p_object)
+    {
+        for (int x = 0; x < p_object.m_shape.GetLength(0); x += 1)
+        {
+            for (int y = 0; y < p_object.m_shape.GetLength(1); y += 1)
+            {
+
+                if (p_object.m_shape[x, y])
+                {
+                    Vector3Int pos = cellPosition(p_object.m_cellIndex, x, y);
+                    if (m_inventory[pos.x, pos.y] != Objet_id.empty)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private void addObject(InventoryItem p_object)
+    {
+        if (isAddingPossible(p_object))
+        {
+            for (int x = 0; x < p_object.m_shape.GetLength(0); x += 1)
+            {
+                for (int y = 0; y < p_object.m_shape.GetLength(1); y += 1)
+                {
+                    if (p_object.m_shape[x, y])
+                    {
+                        Vector3Int pos = cellPosition(p_object.m_cellIndex, x, y);
+                        m_inventory[pos.x, pos.y] = p_object.m_id;
+                    }
+                }
             }
         }
     }
