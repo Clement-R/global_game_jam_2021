@@ -113,7 +113,7 @@ public class InventoryItem : MonoBehaviour
         m_shapeOutline.gameObject.SetActive(p_isVisible);
         m_shapeOutline.color = p_isValid ? m_shapeBaseColor : m_shapeInvalidColor;
     }
-
+    
     void Update()
     {
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -131,6 +131,11 @@ public class InventoryItem : MonoBehaviour
             if (!PlayerSelection.Instance.HasASelectedItem && mouseOverObject)
             {
                 PlayerSelection.Instance.SetSelectedItem(this);
+                
+                System.Random rnd = new System.Random();
+                int nbr = rnd.Next() % 6 + 1;
+                string file = "prendre_" + nbr.ToString();
+                FindObjectOfType<AudioManager>().Play(file);
             }
         }
 
@@ -203,7 +208,7 @@ public class InventoryItem : MonoBehaviour
             canPutInInventory = false;
             notInBox = true;
         }
-
+        
         if (Input.GetMouseButtonUp(0))
         {
             if (canPutInInventory)
@@ -220,6 +225,11 @@ public class InventoryItem : MonoBehaviour
             }
 
             PlayerSelection.Instance.SetSelectedItem(null);
+            
+            System.Random rnd = new System.Random();
+            int nbr = rnd.Next() % 6 + 1;
+            string file = "poser_" + nbr.ToString();
+            FindObjectOfType<AudioManager>().Play(file);
         }
         else
         {

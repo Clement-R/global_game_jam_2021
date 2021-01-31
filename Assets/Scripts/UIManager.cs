@@ -104,6 +104,8 @@ public class UIManager : MonoBehaviour
         //TODO: move envelope away
 
         GameManager.Instance.SetGameState(GameState.Room);
+        
+        FindObjectOfType<AudioManager>().Play("menu_begin");
     }
 
     private void Show(CanvasGroup p_group)
