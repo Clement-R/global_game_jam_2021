@@ -5,18 +5,20 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider2D))]
+//[RequireComponent(typeof(Collider2D))]
 public class Clickable : MonoBehaviour
 {
     public UnityEvent OnClick;
     [SerializeField] private int m_maxFramesBetweenDownAndUp = 10;
-    private Collider2D m_collider;
+    [SerializeField] private Collider2D m_collider;
 
     private int m_lastMouseDownOver = 0;
 
     private void Start()
     {
-        m_collider = GetComponent<Collider2D>();
+        if (m_collider == null) {
+            m_collider = GetComponent<Collider2D>();
+        }
     }
 
     public bool IsMouseOver()

@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Collider2D))]
+//[RequireComponent(typeof(Collider2D))]
 public class InventoryItem : MonoBehaviour
 {
     [HideInInspector] public Vector3Int CellIndex;

@@ -100,6 +100,7 @@ public class UIManager : MonoBehaviour
 
         Debug.Log("Open intro letter");
         m_introLetterOpen = true;
+        m_introEnvelopeClickable.gameObject.SetActive(false);
         //TODO: show letter
         //TODO: move envelope away
 
