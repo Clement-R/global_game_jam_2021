@@ -59,7 +59,6 @@ public class UIManager : MonoBehaviour
     private void ToOutro()
     {
         GameManager.Instance.SetGameState(GameState.Outro);
-        m_outro.DOFade(1f, 1f);
     }
 
     private void Update()
@@ -96,7 +95,7 @@ public class UIManager : MonoBehaviour
         {
             // Show outro
             Show(m_outro);
-            m_outro.alpha = 1f;
+            m_outro.DOFade(1f, 1f);
         }
         else
         {
