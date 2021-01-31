@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2108755002521708493}
   - component: {fileID: 5307281862222251404}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 208191875174961219}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TempShape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 2019566046933196484}
   - component: {fileID: 2019566046933196485}
   - component: {fileID: 2019566046933196482}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InventoryItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2019566048013306381}
   - component: {fileID: 2019566048013306378}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShapeOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2019566048022947706}
   - component: {fileID: 2019566048022947709}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8378113085411153114}
   - component: {fileID: 560825680356163064}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
