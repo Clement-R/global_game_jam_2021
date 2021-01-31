@@ -116,6 +116,9 @@ public class InventoryItem : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.State != GameState.Room)
+            return;
+
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
 
