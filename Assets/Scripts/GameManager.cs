@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => m_instance;
     private static GameManager m_instance = null;
 
-    [SerializeField] private List<StateToCameraPosition> m_cameraPositions;
-
     void Awake()
     {
         if (m_instance == null)
@@ -32,29 +30,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return null;
         SetGameState(GameState.Intro);
     }
 
     public void SetGameState(GameState p_gameState)
     {
         State = p_gameState;
-        var cameraPos = m_cameraPositions.First(e => e.State == p_gameState);
-        Camera.main.transform.position = new Vector3(
-            cameraPos.CameraPosition.x,
-            cameraPos.CameraPosition.y,
-            Camera.main.transform.position.z
-        );
         OnGameStateChange?.Invoke(p_gameState);
     }
-}
-
-[System.Serializable]
-public class StateToCameraPosition
-{
-    public GameState State;
-    public Vector3 CameraPosition;
 }
 
 public enum GameState
