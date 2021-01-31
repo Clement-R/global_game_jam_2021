@@ -537,13 +537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604eae15a0b998e4080c1493b8356d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cameraPositions:
-  - State: 0
-    CameraPosition: {x: -18, y: 0, z: 0}
-  - State: 1
-    CameraPosition: {x: 0, y: 0, z: 0}
-  - State: 2
-    CameraPosition: {x: -18, y: 0, z: 0}
 --- !u!4 &132782381
 Transform:
   m_ObjectHideFlags: 0
@@ -3539,7 +3532,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 622425883
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &1829653156
 RectTransform:
