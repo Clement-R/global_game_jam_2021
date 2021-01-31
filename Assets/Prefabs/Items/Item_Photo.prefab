@@ -113,6 +113,10 @@ PrefabInstance:
       propertyPath: m_collider
       value: 
       objectReference: {fileID: 6239026453953326947}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_descriptionText
+      value: Un cadre qui expose une vielle photographie ce qui semble etre un mariage
+      objectReference: {fileID: 0}
     - target: {fileID: 2019566046933196487, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
       propertyPath: m_RootOrder
       value: 0

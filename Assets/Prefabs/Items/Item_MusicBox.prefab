@@ -113,6 +113,11 @@ PrefabInstance:
       propertyPath: m_collider
       value: 
       objectReference: {fileID: 3837430453516158669}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_descriptionText
+      value: Quand je le fait tourner, une musique inconne se joue -> faire jouer
+        une piste de musique
+      objectReference: {fileID: 0}
     - target: {fileID: 2019566046933196487, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
       propertyPath: m_RootOrder
       value: 0

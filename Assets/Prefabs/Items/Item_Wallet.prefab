@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!61 &4245290739180549869
+--- !u!61 &6264521731804641389
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5382981391603217181}
+  m_GameObject: {fileID: 2978455396472656397}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -26,13 +26,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
---- !u!61 &6264521731804641389
+--- !u!61 &4245290739180549869
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2978455396472656397}
+  m_GameObject: {fileID: 5382981391603217181}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -139,6 +139,11 @@ PrefabInstance:
       propertyPath: m_collider
       value: 
       objectReference: {fileID: 6264521731804641389}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_descriptionText
+      value: Un portefeuille contenant quelques papiers... Je trouvera surement de
+        la place pour de caser.
+      objectReference: {fileID: 0}
     - target: {fileID: 2019566046933196487, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
       propertyPath: m_RootOrder
       value: 0
