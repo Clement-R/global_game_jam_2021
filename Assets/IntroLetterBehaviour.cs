@@ -27,6 +27,7 @@ public class IntroLetterBehaviour : MonoBehaviour, IBeginDragHandler, IDragHandl
 
     public void OnDrag(PointerEventData eventData)
     {
+        Debug.Log("drag");
         if (!m_uiManager.RevealIntroDone)
             return;
 
