@@ -6,7 +6,9 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public static Inventory Instance => m_instance;
+    public bool IsFullEnough => GetItemsInInventory().Count >= MinNumOfItems;
 
+    [SerializeField] private int MinNumOfItems = 2;
     [SerializeField] private Vector2Int m_gridSize;
     [SerializeField] private float m_cellSize;
     [SerializeField] private LineRenderer m_linePrefab;

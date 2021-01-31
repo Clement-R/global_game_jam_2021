@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     [Header("Outro")]
     [SerializeField] private TextMeshProUGUI m_outroLetterText;
 
-    [Header("Debug")]
+    [Header("Room")]
     [SerializeField] private Button m_toOutroButton;
 
     private bool m_clickToOpenVisible = false;
@@ -51,6 +51,15 @@ public class UIManager : MonoBehaviour
                 m_clickToOpenText.Restart();
                 m_clickToOpenVisible = true;
             }
+        }
+
+        if (Inventory.Instance.IsFullEnough)
+        {
+            m_toOutroButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            m_toOutroButton.gameObject.SetActive(false);
         }
     }
     private void GameStateChanged(GameState p_newState)
