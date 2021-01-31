@@ -122,7 +122,6 @@ public class UIManager : MonoBehaviour
             return;
 
         m_introLetterOpen = true;
-
         m_letterText.Hide();
         m_clickToOpenText.Hide();
 
@@ -167,6 +166,9 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.SetGameState(GameState.Room);
         m_fakeBox.gameObject.SetActive(false);
         m_fakeBox.gameObject.transform.position = Vector3.down * 100f;
+        m_introEnvelopeClickable.gameObject.SetActive(false);
+
+        FindObjectOfType<AudioManager>().Play("menu_begin");
     }
 
     private void Show(CanvasGroup p_group)

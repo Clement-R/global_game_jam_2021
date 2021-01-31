@@ -50,6 +50,7 @@ public class Inventory : MonoBehaviour
         {
             if (child.gameObject.TryGetComponent<InventoryItem>(out InventoryItem comp))
                 items.Add(comp);
+            
         }
 
         return items;

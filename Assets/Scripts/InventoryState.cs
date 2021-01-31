@@ -70,6 +70,7 @@ public class InventoryState : MonoBehaviour
 
         m_lockedOpen = !m_lockedOpen;
         SetState(m_lockedOpen);
+        
     }
 
     private void SetState(bool p_isOpen, bool p_reset = false)

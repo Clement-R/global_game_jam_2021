@@ -5,15 +5,19 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Collider2D))]
+//[RequireComponent(typeof(Collider2D))]
 public class InventoryItem : MonoBehaviour
 {
     [HideInInspector] public Vector3Int CellIndex;
     [SerializeField] private SpriteRenderer m_image;
     [SerializeField] private SpriteRenderer m_outline;
 
+    [SerializeField] private string m_baseLayer;
+    [SerializeField] private string m_grabLayer;
+
     [Header("Shape outline")]
     [SerializeField] private SpriteRenderer m_shapeOutline;
+    [SerializeField] private Transform m_shapeContainer;
     [SerializeField] private Color m_shapeBaseColor;
     [SerializeField] private Color m_shapeInvalidColor;
 
@@ -21,7 +25,7 @@ public class InventoryItem : MonoBehaviour
     //le point de rotation est celui du centre
     public Inventory.Objet_id m_id;
 
-    private Collider2D m_collider;
+    [SerializeField] private Collider2D m_collider;
     private bool m_isColliding => m_inCollisionWith.Count > 0;
     private HashSet<GameObject> m_inCollisionWith = new HashSet<GameObject>();
 
@@ -38,8 +42,22 @@ public class InventoryItem : MonoBehaviour
         m_baseRotation = transform.rotation;
         m_baseParent = transform.parent;
 
-        m_collider = GetComponent<Collider2D>();
+        if (m_collider == null) {
+            m_collider = GetComponent<Collider2D>();
+        }
         m_collider.isTrigger = true;
+    }
+
+    void ChangeSpriteLayerToGrab(bool b) {
+        if(b) {
+            m_image.sortingLayerName = m_grabLayer;
+            m_outline.sortingLayerName = m_grabLayer;
+            m_shapeOutline.sortingLayerName = m_grabLayer;
+        } else {
+            m_image.sortingLayerName = m_baseLayer;
+            m_outline.sortingLayerName = m_baseLayer;
+            m_shapeOutline.sortingLayerName = m_baseLayer;
+        }
     }
 
     void rotate() //the main difficulty
@@ -74,21 +92,28 @@ public class InventoryItem : MonoBehaviour
         transform.SetParent(m_baseParent);
         transform.position = m_basePosition;
         transform.rotation = m_baseRotation;
+        ChangeSpriteLayerToGrab(false);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        m_inCollisionWith.Add(other.gameObject);
+        if(other.transform.parent == m_inventory.transform) {
+            m_inCollisionWith.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        m_inCollisionWith.Add(other.gameObject);
+        if(other.transform.parent == m_inventory.transform) {
+            m_inCollisionWith.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        m_inCollisionWith.Remove(other.gameObject);
+        if(other.transform.parent == m_inventory.transform) {
+            m_inCollisionWith.Remove(other.gameObject);
+        }
     }
 
     private void UpdateColorToState()
@@ -113,7 +138,7 @@ public class InventoryItem : MonoBehaviour
         m_shapeOutline.gameObject.SetActive(p_isVisible);
         m_shapeOutline.color = p_isValid ? m_shapeBaseColor : m_shapeInvalidColor;
     }
-
+    
     void Update()
     {
         if (GameManager.Instance.State != GameState.Room)
@@ -134,6 +159,10 @@ public class InventoryItem : MonoBehaviour
             if (!PlayerSelection.Instance.HasASelectedItem && mouseOverObject)
             {
                 PlayerSelection.Instance.SetSelectedItem(this);
+                
+                ChangeSpriteLayerToGrab(true);
+
+                FindObjectOfType<AudioManager>().Play("grab");
             }
         }
 
@@ -167,11 +196,11 @@ public class InventoryItem : MonoBehaviour
         if (overInventory)
         {
             CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
-            m_shapeOutline.transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
+            m_shapeContainer.transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
         }
         else
         {
-            m_shapeOutline.transform.position = Vector3.zero;
+            m_shapeContainer.transform.localPosition = Vector3.zero;
         }
 
         bool notInBox = false;
@@ -206,7 +235,7 @@ public class InventoryItem : MonoBehaviour
             canPutInInventory = false;
             notInBox = true;
         }
-
+        
         if (Input.GetMouseButtonUp(0))
         {
             if (canPutInInventory)
@@ -214,15 +243,22 @@ public class InventoryItem : MonoBehaviour
                 CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
                 transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
                 transform.SetParent(m_inventory.transform);
-                m_shapeOutline.transform.localPosition = Vector3.zero;
+                m_shapeContainer.transform.localPosition = Vector3.zero;
             }
             else
             {
                 Debug.Log($"Can't put in inventory Not in box : {notInBox} - Colliding : {colliding}");
+                if (colliding) {
+                    foreach(var col in m_inCollisionWith) {
+                        Debug.Log($"{col.name}");
+                    }
+                }
                 ResetPositionAndRotation();
             }
 
             PlayerSelection.Instance.SetSelectedItem(null);
+            
+            FindObjectOfType<AudioManager>().Play("drop");
         }
         else
         {
