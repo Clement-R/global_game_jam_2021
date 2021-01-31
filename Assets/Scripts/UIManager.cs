@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
         {
             // Show outro
             Show(m_outro);
-            m_outro.alpha = 1f;
+            m_outro.DOFade(1f, 1f);
         }
         else
         {
