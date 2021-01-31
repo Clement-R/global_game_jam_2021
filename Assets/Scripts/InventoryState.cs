@@ -8,6 +8,8 @@ using DG.Tweening;
 
 public class InventoryState : MonoBehaviour
 {
+    public Vector3 ClosePosition => m_closePosition;
+
     [SerializeField] private Clickable m_clickable;
 
     [SerializeField] private float m_travelDuration;
@@ -31,6 +33,9 @@ public class InventoryState : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.State != GameState.Room)
+            return;
+
         // Show if mouse over and not opened or locked
         if (m_clickable.IsMouseOver() && !m_open && !m_lockedOpen)
         {
@@ -60,6 +65,9 @@ public class InventoryState : MonoBehaviour
 
     private void Click()
     {
+        if (GameManager.Instance.State != GameState.Room)
+            return;
+
         m_lockedOpen = !m_lockedOpen;
         SetState(m_lockedOpen);
         

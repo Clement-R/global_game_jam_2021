@@ -8,7 +8,9 @@ public class PlayerSelection : MonoBehaviour
 {
     public static PlayerSelection Instance => m_instance;
     public InventoryItem SelectedItem => m_selectedItem;
-    public bool HasASelectedItem => m_selectedItem != null;
+    public bool HasASelectedItem => m_selectedItem != null || m_fakeSelectedItem != null;
+
+    public LayerMask Layer;
 
     [SerializeField] private SpriteRenderer m_cursor;
     [SerializeField] private Sprite m_flatHand;
@@ -17,6 +19,7 @@ public class PlayerSelection : MonoBehaviour
 
     private static PlayerSelection m_instance = null;
     private InventoryItem m_selectedItem = null;
+    private GameObject m_fakeSelectedItem = null;
 
     void Awake()
     {
@@ -33,6 +36,7 @@ public class PlayerSelection : MonoBehaviour
     private void Start()
     {
         Cursor.visible = false;
+        Layer = LayerMask.GetMask("InventoryItem");
     }
 
     private void Update()
@@ -66,12 +70,17 @@ public class PlayerSelection : MonoBehaviour
         m_selectedItem = p_item;
     }
 
+    public void SetFakeSelectedItem(GameObject p_item)
+    {
+        m_fakeSelectedItem = p_item;
+    }
+
     private bool IsMouseOverAClickable()
     {
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
 
-        var collisions = Physics2D.OverlapPointAll(mousePosition);
+        var collisions = Physics2D.OverlapPointAll(mousePosition, Layer);
         bool mouseOverObject = false;
         if (collisions.FirstOrDefault(e => e.TryGetComponent<Clickable>(out _)) != null)
         {
