@@ -4,15 +4,21 @@ using System.Linq;
 
 using UnityEngine;
 
+using DG.Tweening;
+
 public class InventoryState : MonoBehaviour
 {
     [SerializeField] private Clickable m_clickable;
+
+    [SerializeField] private float m_travelDuration;
+    [SerializeField] private Ease m_travelEase;
 
     [SerializeField] private Vector3 m_openPosition;
     [SerializeField] private Vector3 m_closePosition;
 
     private bool m_open = false;
     private Collider2D m_collider;
+    private bool m_animationPlaying;
 
     void Start()
     {
@@ -41,19 +47,32 @@ public class InventoryState : MonoBehaviour
 
     private void SetState(bool p_isOpen, bool p_reset = false)
     {
+        if (m_animationPlaying)
+            return;
+
         if (m_open == p_isOpen && !p_reset)
             return;
 
         m_open = p_isOpen;
         if (m_open)
         {
-            //TODO: play open tween
-            transform.position = m_openPosition;
+            m_animationPlaying = true;
+            transform.DOMove(m_openPosition, m_travelDuration).SetEase(m_travelEase).OnComplete(
+                () =>
+                {
+                    m_animationPlaying = false;
+                }
+            );
         }
         else
         {
-            //TODO: play close tween
-            transform.position = m_closePosition;
+            m_animationPlaying = true;
+            transform.DOMove(m_closePosition, m_travelDuration).SetEase(m_travelEase).OnComplete(
+                () =>
+                {
+                    m_animationPlaying = false;
+                }
+            );
         }
     }
 
