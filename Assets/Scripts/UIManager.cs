@@ -59,6 +59,7 @@ public class UIManager : MonoBehaviour
     private void ToOutro()
     {
         GameManager.Instance.SetGameState(GameState.Outro);
+        m_outro.DOFade(1f, 1f);
     }
 
     private void Update()
