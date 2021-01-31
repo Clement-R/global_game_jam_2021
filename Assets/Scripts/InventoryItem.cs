@@ -12,6 +12,9 @@ public class InventoryItem : MonoBehaviour
     [SerializeField] private SpriteRenderer m_image;
     [SerializeField] private SpriteRenderer m_outline;
 
+    [SerializeField] private string m_baseLayer;
+    [SerializeField] private string m_grabLayer;
+
     [Header("Shape outline")]
     [SerializeField] private SpriteRenderer m_shapeOutline;
     [SerializeField] private Transform m_shapeContainer;
@@ -43,6 +46,18 @@ public class InventoryItem : MonoBehaviour
             m_collider = GetComponent<Collider2D>();
         }
         m_collider.isTrigger = true;
+    }
+
+    void ChangeSpriteLayerToGrab(bool b) {
+        if(b) {
+            m_image.sortingLayerName = m_grabLayer;
+            m_outline.sortingLayerName = m_grabLayer;
+            m_shapeOutline.sortingLayerName = m_grabLayer;
+        } else {
+            m_image.sortingLayerName = m_baseLayer;
+            m_outline.sortingLayerName = m_baseLayer;
+            m_shapeOutline.sortingLayerName = m_baseLayer;
+        }
     }
 
     void rotate() //the main difficulty
@@ -77,21 +92,28 @@ public class InventoryItem : MonoBehaviour
         transform.SetParent(m_baseParent);
         transform.position = m_basePosition;
         transform.rotation = m_baseRotation;
+        ChangeSpriteLayerToGrab(false);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        m_inCollisionWith.Add(other.gameObject);
+        if(other.transform.parent == m_inventory.transform) {
+            m_inCollisionWith.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        m_inCollisionWith.Add(other.gameObject);
+        if(other.transform.parent == m_inventory.transform) {
+            m_inCollisionWith.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        m_inCollisionWith.Remove(other.gameObject);
+        if(other.transform.parent == m_inventory.transform) {
+            m_inCollisionWith.Remove(other.gameObject);
+        }
     }
 
     private void UpdateColorToState()
@@ -135,10 +157,9 @@ public class InventoryItem : MonoBehaviour
             {
                 PlayerSelection.Instance.SetSelectedItem(this);
                 
-                System.Random rnd = new System.Random();
-                int nbr = rnd.Next() % 6 + 1;
-                string file = "prendre_" + nbr.ToString();
-                FindObjectOfType<AudioManager>().Play(file);
+                ChangeSpriteLayerToGrab(true);
+
+                FindObjectOfType<AudioManager>().Play("grab");
             }
         }
 
@@ -234,10 +255,7 @@ public class InventoryItem : MonoBehaviour
 
             PlayerSelection.Instance.SetSelectedItem(null);
             
-            System.Random rnd = new System.Random();
-            int nbr = rnd.Next() % 6 + 1;
-            string file = "poser_" + nbr.ToString();
-            FindObjectOfType<AudioManager>().Play(file);
+            FindObjectOfType<AudioManager>().Play("drop");
         }
         else
         {
