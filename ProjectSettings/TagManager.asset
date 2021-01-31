@@ -50,6 +50,9 @@ TagManager:
   - name: InventoryItem
     uniqueID: 3115787359
     locked: 0
+  - name: UI
+    uniqueID: 622425883
+    locked: 0
   - name: Cursor
     uniqueID: 1490477783
     locked: 0
