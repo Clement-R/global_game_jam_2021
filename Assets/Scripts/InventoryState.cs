@@ -16,6 +16,7 @@ public class InventoryState : MonoBehaviour
     [SerializeField] private Vector3 m_openPosition;
     [SerializeField] private Vector3 m_closePosition;
 
+    private bool m_lockedOpen = false;
     private bool m_open = false;
     private Collider2D m_collider;
     private bool m_animationPlaying;
@@ -30,6 +31,23 @@ public class InventoryState : MonoBehaviour
 
     private void Update()
     {
+        // Show if mouse over and not opened or locked
+        if (m_clickable.IsMouseOver() && !m_open && !m_lockedOpen)
+        {
+            SetState(true);
+        }
+
+        // Hide if mouse out and not  or locked
+        if (!m_clickable.IsMouseOver() && m_open && !m_lockedOpen)
+        {
+            SetState(false);
+        }
+
+        if (m_lockedOpen && !m_open)
+        {
+            SetState(true);
+        }
+
         // Detect player drag an object over if closed
         if (PlayerSelection.Instance.SelectedItem == null || m_open)
             return;
@@ -42,7 +60,8 @@ public class InventoryState : MonoBehaviour
 
     private void Click()
     {
-        SetState(!m_open);
+        m_lockedOpen = !m_lockedOpen;
+        SetState(m_lockedOpen);
     }
 
     private void SetState(bool p_isOpen, bool p_reset = false)
