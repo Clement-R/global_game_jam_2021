@@ -14,6 +14,7 @@ public class InventoryItem : MonoBehaviour
 
     [Header("Shape outline")]
     [SerializeField] private SpriteRenderer m_shapeOutline;
+    [SerializeField] private Transform m_shapeContainer;
     [SerializeField] private Color m_shapeBaseColor;
     [SerializeField] private Color m_shapeInvalidColor;
 
@@ -21,7 +22,7 @@ public class InventoryItem : MonoBehaviour
     //le point de rotation est celui du centre
     public Inventory.Objet_id m_id;
 
-    private Collider2D m_collider;
+    [SerializeField] private Collider2D m_collider;
     private bool m_isColliding => m_inCollisionWith.Count > 0;
     private HashSet<GameObject> m_inCollisionWith = new HashSet<GameObject>();
 
@@ -38,7 +39,9 @@ public class InventoryItem : MonoBehaviour
         m_baseRotation = transform.rotation;
         m_baseParent = transform.parent;
 
-        m_collider = GetComponent<Collider2D>();
+        if (m_collider == null) {
+            m_collider = GetComponent<Collider2D>();
+        }
         m_collider.isTrigger = true;
     }
 
@@ -169,11 +172,11 @@ public class InventoryItem : MonoBehaviour
         if (overInventory)
         {
             CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
-            m_shapeOutline.transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
+            m_shapeContainer.transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
         }
         else
         {
-            m_shapeOutline.transform.position = Vector3.zero;
+            m_shapeContainer.transform.localPosition = Vector3.zero;
         }
 
         bool notInBox = false;
@@ -216,11 +219,16 @@ public class InventoryItem : MonoBehaviour
                 CellIndex = m_inventory.GetCellIndexFromPosition(transform.position);
                 transform.position = m_inventory.GetPositionFromCellIndex(CellIndex);
                 transform.SetParent(m_inventory.transform);
-                m_shapeOutline.transform.localPosition = Vector3.zero;
+                m_shapeContainer.transform.localPosition = Vector3.zero;
             }
             else
             {
                 Debug.Log($"Can't put in inventory Not in box : {notInBox} - Colliding : {colliding}");
+                if (colliding) {
+                    foreach(var col in m_inCollisionWith) {
+                        Debug.Log($"{col.name}");
+                    }
+                }
                 ResetPositionAndRotation();
             }
 
