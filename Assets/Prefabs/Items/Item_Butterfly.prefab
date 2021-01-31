@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1179179937
-  m_SortingLayer: 3
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: ffc4bfc14a1df8448ac92a79428eefa7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -151,7 +151,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1179179937
-  m_SortingLayer: 3
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: ffc4bfc14a1df8448ac92a79428eefa7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -233,7 +233,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1179179937
-  m_SortingLayer: 3
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: ffc4bfc14a1df8448ac92a79428eefa7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -315,7 +315,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1179179937
-  m_SortingLayer: 3
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: ffc4bfc14a1df8448ac92a79428eefa7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -420,20 +420,9 @@ PrefabInstance:
       value: 0.5534617
       objectReference: {fileID: 0}
     - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
-      propertyPath: m_shapeBaseColor.a
-      value: 0.60784316
-      objectReference: {fileID: 0}
-    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
-      propertyPath: m_shapeBaseColor.b
-      value: 0.29803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
-      propertyPath: m_shapeBaseColor.g
-      value: 0.29803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
-      propertyPath: m_shapeBaseColor.r
-      value: 0.29803923
+      propertyPath: m_descriptionText
+      value: Le cadre a le merite d'etre fait main... Il possede quelques uns qui
+        sont vraiment tres colores
       objectReference: {fileID: 0}
     - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
       propertyPath: m_shapeInvalidColor.a

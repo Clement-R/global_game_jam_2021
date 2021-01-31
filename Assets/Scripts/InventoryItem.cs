@@ -8,9 +8,11 @@ using UnityEngine.UI;
 //[RequireComponent(typeof(Collider2D))]
 public class InventoryItem : MonoBehaviour
 {
+    [Header("Item Info")]
     [HideInInspector] public Vector3Int CellIndex;
-    [SerializeField] private SpriteRenderer m_image;
+    [SerializeField] public SpriteRenderer m_image;
     [SerializeField] private SpriteRenderer m_outline;
+    [SerializeField] public string m_descriptionText;
 
     [SerializeField] private string m_baseLayer;
     [SerializeField] private string m_grabLayer;
@@ -97,21 +99,22 @@ public class InventoryItem : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.transform.parent == m_inventory.transform) {
+        if(other.transform.parent.parent == m_inventory.transform) {
             m_inCollisionWith.Add(other.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.transform.parent == m_inventory.transform) {
+        if(other.transform.parent.parent == m_inventory.transform) {
             m_inCollisionWith.Add(other.gameObject);
         }
+        //Debug.Log(other.transform.parent);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.transform.parent == m_inventory.transform) {
+        if(other.transform.parent.parent == m_inventory.transform) {
             m_inCollisionWith.Remove(other.gameObject);
         }
     }

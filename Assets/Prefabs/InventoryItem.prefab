@@ -165,6 +165,7 @@ MonoBehaviour:
   CellIndex: {x: 0, y: 0, z: 0}
   m_image: {fileID: 5307281862222251404}
   m_outline: {fileID: 2019566048022947709}
+  m_descriptionText: Decription
   m_baseLayer: InventoryItem
   m_grabLayer: GrabLayer
   m_shapeOutline: {fileID: 2019566048013306378}
