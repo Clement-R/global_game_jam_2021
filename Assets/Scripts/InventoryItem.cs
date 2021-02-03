@@ -116,6 +116,9 @@ public class InventoryItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D p_other)
     {
+        if (p_other.transform.parent == null)
+            return;
+
         if (p_other.transform.parent.parent == m_inventory.transform)
         {
             m_inCollisionWith.Add(p_other.gameObject);
@@ -124,6 +127,9 @@ public class InventoryItem : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D p_other)
     {
+        if (p_other.transform.parent == null)
+            return;
+
         if (p_other.transform.parent.parent == m_inventory.transform)
         {
             m_inCollisionWith.Remove(p_other.gameObject);
@@ -176,8 +182,12 @@ public class InventoryItem : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-                StopCoroutine(m_grabCheckRoutine);
-                m_grabCheckRoutine = null;
+                if (m_grabCheckRoutine != null)
+                {
+                    m_grabCheckRoutine = null;
+                }
+
+                yield break;
             }
 
             yield return null;
