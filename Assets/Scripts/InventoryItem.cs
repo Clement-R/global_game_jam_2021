@@ -202,13 +202,10 @@ public class InventoryItem : MonoBehaviour
             mouseOverObject = true;
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButton(0))
         {
-            if (m_grabCheckRoutine != null)
-            {
-                StopCoroutine(m_grabCheckRoutine);
-                m_grabCheckRoutine = null;
-            }
+            if (!PlayerSelection.Instance.HasASelectedItem && mouseOverObject)
+                m_grabCheckRoutine = StartCoroutine(_StartGrabCheck(mousePosition));
         }
 
         // If item is not selected, stop there
