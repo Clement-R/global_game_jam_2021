@@ -252,6 +252,22 @@ PrefabInstance:
       value: Un lion majestueux fait en origami... Il a du etre tres patient pour
         le faire
       objectReference: {fileID: 0}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 62fe94a9b3a69ea4ab9cd4a138ed4326, type: 3}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: c0120dcdf8bd2cf4a8139cc8b46e035e, type: 3}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: f29ee0303972d624d8197f64f8353e61, type: 3}
     - target: {fileID: 2019566046933196487, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
       propertyPath: m_RootOrder
       value: 0

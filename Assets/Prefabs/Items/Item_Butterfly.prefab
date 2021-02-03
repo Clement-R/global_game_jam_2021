@@ -436,6 +436,18 @@ PrefabInstance:
       propertyPath: m_shapeInvalidColor.g
       value: 0.5019608
       objectReference: {fileID: 0}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a4b26c98f57b0d488457a0e6a0237f8, type: 3}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 172bc1340e9bb844e943cb7141ac00ef, type: 3}
     - target: {fileID: 2019566046933196487, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
       propertyPath: m_RootOrder
       value: 0

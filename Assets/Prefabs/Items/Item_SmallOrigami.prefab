@@ -252,6 +252,22 @@ PrefabInstance:
       value: Un petit lapin en origami. Il parait vraiement plus simple que le lion
         juste a cote.
       objectReference: {fileID: 0}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: fd420d1746878764ab64bc73a76a243b, type: 3}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 51721a5c1766dd24c9fbbfd401abd273, type: 3}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a3d41840f3d138468cfa806195ea041, type: 3}
     - target: {fileID: 2019566046933196487, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
       propertyPath: m_RootOrder
       value: 0

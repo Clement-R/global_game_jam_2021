@@ -118,6 +118,22 @@ PrefabInstance:
       value: Quand je le fait tourner, une musique inconne se joue -> faire jouer
         une piste de musique
       objectReference: {fileID: 0}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 103a9adeee6ac44498df4a8fdd40e86f, type: 3}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: d3c2f3e2554c9f648bb136ca1d13d06b, type: 3}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: ad04e57ab8d8c7243b4b3325c4fa7966, type: 3}
     - target: {fileID: 2019566046933196487, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
       propertyPath: m_RootOrder
       value: 0

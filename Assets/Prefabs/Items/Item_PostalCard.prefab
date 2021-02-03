@@ -118,6 +118,22 @@ PrefabInstance:
       value: Une carte postale dont les bouts sont legerements ecornes... Elle represente
         un monument sompteux, avec une courte description de vacances au verso.
       objectReference: {fileID: 0}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5257fced58fc7004495edb1db0b271c9, type: 3}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: b8cfc8b30ccd0f74ab90ca145c0051e7, type: 3}
+    - target: {fileID: 2019566046933196485, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
+      propertyPath: m_outlineFrames.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5e418ef4f285b2e4aa0725ac1858209e, type: 3}
     - target: {fileID: 2019566046933196487, guid: e340581447541fa49b9b1729cfe753b3, type: 3}
       propertyPath: m_RootOrder
       value: 0
