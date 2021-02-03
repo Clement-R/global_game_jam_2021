@@ -174,6 +174,12 @@ public class InventoryItem : MonoBehaviour
                 isGrabbed = true;
             }
 
+            if (Input.GetMouseButtonUp(0))
+            {
+                StopCoroutine(m_grabCheckRoutine);
+                m_grabCheckRoutine = null;
+            }
+
             yield return null;
         }
 
@@ -194,12 +200,6 @@ public class InventoryItem : MonoBehaviour
         if (collisions.Contains(m_collider))
         {
             mouseOverObject = true;
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            if (!PlayerSelection.Instance.HasASelectedItem && mouseOverObject)
-                m_grabCheckRoutine = StartCoroutine(_StartGrabCheck(mousePosition));
         }
 
         if (Input.GetMouseButtonUp(0))
