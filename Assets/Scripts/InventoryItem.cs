@@ -5,13 +5,14 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-//[RequireComponent(typeof(Collider2D))]
+using DG.Tweening;
+
 public class InventoryItem : MonoBehaviour
 {
     [Header("Item Info")]
     [HideInInspector] public Vector3Int CellIndex;
     [SerializeField] public SpriteRenderer m_image;
-    [SerializeField] private SpriteRenderer m_outline;
+
     [SerializeField] public string m_descriptionText;
 
     [SerializeField] private string m_baseLayer;
@@ -23,6 +24,9 @@ public class InventoryItem : MonoBehaviour
     [SerializeField] private Transform m_shapeContainer;
     [SerializeField] private Color m_shapeBaseColor;
     [SerializeField] private Color m_shapeInvalidColor;
+
+    [Header("Outline")]
+    [SerializeField] private SpriteRenderer m_outline;
     [SerializeField] private List<Sprite> m_outlineFrames;
 
     public bool[, ] m_shape = new bool[5, 5];
@@ -37,6 +41,7 @@ public class InventoryItem : MonoBehaviour
     private Quaternion m_baseRotation;
     private Transform m_baseParent;
     private Inventory m_inventory;
+    private Sequence m_outlineTween = null;
 
     void Start()
     {
@@ -151,6 +156,36 @@ public class InventoryItem : MonoBehaviour
 
     private void UpdateOutline(bool p_outlined)
     {
+        if (p_outlined)
+        {
+            // Start animation
+            if (m_outlineTween == null)
+            {
+                m_outlineTween = DOTween.Sequence();
+                foreach (var sprite in m_outlineFrames)
+                {
+                    m_outlineTween
+                        .AppendCallback(
+                            () =>
+                            {
+                                m_outline.sprite = sprite;
+                            }
+                        )
+                        .AppendInterval(0.15f);
+                }
+                m_outlineTween.SetLoops(-1, LoopType.Restart);
+            }
+        }
+        else
+        {
+            // Stop animation
+            if (m_outlineTween != null)
+            {
+                m_outlineTween.Kill();
+                m_outlineTween = null;
+            }
+        }
+
         m_outline.gameObject.SetActive(p_outlined);
     }
 
@@ -300,7 +335,7 @@ public class InventoryItem : MonoBehaviour
             }
             else
             {
-                Debug.Log($"Can't put in inventory Not in box : {notInBox} - Colliding : {colliding}");
+                Debug.Log($"Can't put in inventory Not in box: {notInBox} - Colliding: {colliding}");
                 if (colliding)
                 {
                     foreach (var col in m_inCollisionWith)
