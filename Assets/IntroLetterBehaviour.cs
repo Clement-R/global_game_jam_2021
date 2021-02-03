@@ -27,7 +27,6 @@ public class IntroLetterBehaviour : MonoBehaviour, IBeginDragHandler, IDragHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("drag");
         if (!m_uiManager.RevealIntroDone)
             return;
 
@@ -40,6 +39,7 @@ public class IntroLetterBehaviour : MonoBehaviour, IBeginDragHandler, IDragHandl
             0f
         );
 
+        //TODO: apply offset to avoid snapping
         m_transform.anchoredPosition = screenPos;
 
         var world = Camera.main.ScreenToWorldPoint(Input.mousePosition);

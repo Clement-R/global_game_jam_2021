@@ -16,6 +16,7 @@ public class InventoryItem : MonoBehaviour
 
     [SerializeField] private string m_baseLayer;
     [SerializeField] private string m_grabLayer;
+    [SerializeField] private float m_minDistance;
 
     [Header("Shape outline")]
     [SerializeField] private SpriteRenderer m_shapeOutline;
@@ -44,18 +45,23 @@ public class InventoryItem : MonoBehaviour
         m_baseRotation = transform.rotation;
         m_baseParent = transform.parent;
 
-        if (m_collider == null) {
+        if (m_collider == null)
+        {
             m_collider = GetComponent<Collider2D>();
         }
         m_collider.isTrigger = true;
     }
 
-    void ChangeSpriteLayerToGrab(bool b) {
-        if(b) {
+    void ChangeSpriteLayerToGrab(bool p_grab)
+    {
+        if (p_grab)
+        {
             m_image.sortingLayerName = m_grabLayer;
             m_outline.sortingLayerName = m_grabLayer;
             m_shapeOutline.sortingLayerName = m_grabLayer;
-        } else {
+        }
+        else
+        {
             m_image.sortingLayerName = m_baseLayer;
             m_outline.sortingLayerName = m_baseLayer;
             m_shapeOutline.sortingLayerName = m_baseLayer;
@@ -97,25 +103,30 @@ public class InventoryItem : MonoBehaviour
         ChangeSpriteLayerToGrab(false);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D p_other)
     {
-        if(other.transform.parent.parent == m_inventory.transform) {
-            m_inCollisionWith.Add(other.gameObject);
+        if (p_other.transform.parent == null)
+            return;
+
+        if (p_other.transform.parent.parent == m_inventory.transform)
+        {
+            m_inCollisionWith.Add(p_other.gameObject);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D p_other)
     {
-        if(other.transform.parent.parent == m_inventory.transform) {
-            m_inCollisionWith.Add(other.gameObject);
+        if (p_other.transform.parent.parent == m_inventory.transform)
+        {
+            m_inCollisionWith.Add(p_other.gameObject);
         }
-        //Debug.Log(other.transform.parent);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D p_other)
     {
-        if(other.transform.parent.parent == m_inventory.transform) {
-            m_inCollisionWith.Remove(other.gameObject);
+        if (p_other.transform.parent.parent == m_inventory.transform)
+        {
+            m_inCollisionWith.Remove(p_other.gameObject);
         }
     }
 
@@ -141,7 +152,35 @@ public class InventoryItem : MonoBehaviour
         m_shapeOutline.gameObject.SetActive(p_isVisible);
         m_shapeOutline.color = p_isValid ? m_shapeBaseColor : m_shapeInvalidColor;
     }
-    
+
+    private void GrabObject()
+    {
+        PlayerSelection.Instance.SetSelectedItem(this);
+        ChangeSpriteLayerToGrab(true);
+        FindObjectOfType<AudioManager>().Play("grab");
+    }
+
+    private Coroutine m_grabCheckRoutine;
+
+    private IEnumerator _StartGrabCheck(Vector3 p_startPosition)
+    {
+        bool isGrabbed = false;
+        while (!isGrabbed)
+        {
+            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
+            if (Vector3.Distance(p_startPosition, mousePosition) > m_minDistance)
+            {
+                isGrabbed = true;
+            }
+
+            yield return null;
+        }
+
+        GrabObject();
+        m_grabCheckRoutine = null;
+    }
+
     void Update()
     {
         if (GameManager.Instance.State != GameState.Room)
@@ -160,12 +199,15 @@ public class InventoryItem : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             if (!PlayerSelection.Instance.HasASelectedItem && mouseOverObject)
-            {
-                PlayerSelection.Instance.SetSelectedItem(this);
-                
-                ChangeSpriteLayerToGrab(true);
+                m_grabCheckRoutine = StartCoroutine(_StartGrabCheck(mousePosition));
+        }
 
-                FindObjectOfType<AudioManager>().Play("grab");
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (m_grabCheckRoutine != null)
+            {
+                StopCoroutine(m_grabCheckRoutine);
+                m_grabCheckRoutine = null;
             }
         }
 
@@ -238,7 +280,7 @@ public class InventoryItem : MonoBehaviour
             canPutInInventory = false;
             notInBox = true;
         }
-        
+
         if (Input.GetMouseButtonUp(0))
         {
             if (canPutInInventory)
@@ -251,8 +293,10 @@ public class InventoryItem : MonoBehaviour
             else
             {
                 Debug.Log($"Can't put in inventory Not in box : {notInBox} - Colliding : {colliding}");
-                if (colliding) {
-                    foreach(var col in m_inCollisionWith) {
+                if (colliding)
+                {
+                    foreach (var col in m_inCollisionWith)
+                    {
                         Debug.Log($"{col.name}");
                     }
                 }
@@ -260,7 +304,7 @@ public class InventoryItem : MonoBehaviour
             }
 
             PlayerSelection.Instance.SetSelectedItem(null);
-            
+
             FindObjectOfType<AudioManager>().Play("drop");
         }
         else
