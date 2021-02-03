@@ -23,6 +23,7 @@ public class InventoryItem : MonoBehaviour
     [SerializeField] private Transform m_shapeContainer;
     [SerializeField] private Color m_shapeBaseColor;
     [SerializeField] private Color m_shapeInvalidColor;
+    [SerializeField] private List<Sprite> m_outlineFrames;
 
     public bool[, ] m_shape = new bool[5, 5];
     //le point de rotation est celui du centre
