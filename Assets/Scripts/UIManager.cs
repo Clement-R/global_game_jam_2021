@@ -80,6 +80,13 @@ public class UIManager : MonoBehaviour
         {
             m_toOutroButton.gameObject.SetActive(false);
         }
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            GameManager.Instance.SetGameState(GameState.Room);
+        }
+#endif
     }
     private void GameStateChanged(GameState p_newState)
     {
