@@ -12,6 +12,7 @@ public class IntroLetterBehaviour : MonoBehaviour, IBeginDragHandler, IDragHandl
     [SerializeField] private Collider2D m_box;
 
     private Vector3 m_basePosition;
+    private Vector2 m_diff;
 
     private void Start()
     {
@@ -22,7 +23,9 @@ public class IntroLetterBehaviour : MonoBehaviour, IBeginDragHandler, IDragHandl
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-
+        Vector2 canvasPosition = WorldToCanvas(Input.mousePosition);
+        var diff = canvasPosition - m_transform.anchoredPosition;
+        m_diff = diff;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -32,33 +35,17 @@ public class IntroLetterBehaviour : MonoBehaviour, IBeginDragHandler, IDragHandl
 
         PlayerSelection.Instance.SetFakeSelectedItem(gameObject);
 
-        var pos = Camera.main.ScreenToViewportPoint(eventData.position);
-        Vector3 screenPos = new Vector3(
-            Screen.width * pos.x,
-            Screen.height * pos.y,
-            0f
-        );
+        Vector2 canvasPosition = WorldToCanvas(Input.mousePosition);
+        m_transform.anchoredPosition = canvasPosition - m_diff;
+    }
 
-        //TODO: apply offset to avoid snapping
-        m_transform.anchoredPosition = screenPos;
-
-        var world = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    public Vector2 WorldToCanvas(Vector3 p_position)
+    {
+        var world = Camera.main.ScreenToWorldPoint(p_position);
         Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(world);
-        Vector2 canvasPosition = new Vector2(
-            ((ViewportPosition.x * m_canvasRect.sizeDelta.x) - (m_canvasRect.sizeDelta.x * 0.5f)),
-            ((ViewportPosition.y * m_canvasRect.sizeDelta.y) - (m_canvasRect.sizeDelta.y * 0.5f)));
-        m_transform.anchoredPosition = canvasPosition;
-
-        Debug.DrawLine(
-            m_box.bounds.center - m_box.bounds.size / 2f,
-            m_box.bounds.center + m_box.bounds.size / 2f,
-            Color.blue
-        );
-        Debug.DrawLine(
-            m_box.bounds.center + new Vector3(-m_box.bounds.size.x / 2f, m_box.bounds.size.y / 2f),
-            m_box.bounds.center + new Vector3(m_box.bounds.size.x / 2f, -m_box.bounds.size.y / 2f),
-            Color.red
-        );
+        return new Vector2(
+            (ViewportPosition.x * m_canvasRect.sizeDelta.x) - (m_canvasRect.sizeDelta.x * 0.5f),
+            (ViewportPosition.y * m_canvasRect.sizeDelta.y) - (m_canvasRect.sizeDelta.y * 0.5f));
     }
 
     public void OnEndDrag(PointerEventData eventData)
