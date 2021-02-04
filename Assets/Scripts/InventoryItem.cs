@@ -343,7 +343,7 @@ public class InventoryItem : MonoBehaviour
                 {
                     foreach (var col in m_inCollisionWith)
                     {
-                        Debug.Log($"{col.name}");
+                        Debug.Log($"{col.name} - {col.transform.parent.name}");
                     }
                 }
                 ResetPositionAndRotation();
