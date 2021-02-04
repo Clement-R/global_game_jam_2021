@@ -212,7 +212,7 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls: []
-  m_maxFramesBetweenDownAndUp: 60
+  m_maxFramesBetweenDownAndUp: 30
   m_collider: {fileID: 4749534391111312971}
 --- !u!1 &2019566048013306379
 GameObject:
