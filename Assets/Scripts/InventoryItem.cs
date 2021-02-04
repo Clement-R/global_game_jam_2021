@@ -5,10 +5,15 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Lean.Localization;
+
 using DG.Tweening;
 
 public class InventoryItem : MonoBehaviour
 {
+    [Header("Translation")]
+    [LeanTranslationName] public string DescriptionKey;
+
     [Header("Item Info")]
     [HideInInspector] public Vector3Int CellIndex;
     [SerializeField] public SpriteRenderer m_image;

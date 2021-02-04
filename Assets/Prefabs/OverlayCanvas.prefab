@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004909307}
   - component: {fileID: 1004909309}
+  - component: {fileID: 3769033787313797308}
   - component: {fileID: 1004909308}
   m_Layer: 5
   m_Name: Text
@@ -45,6 +46,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004909306}
   m_CullTransparentMesh: 1
+--- !u!114 &3769033787313797308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004909306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: OutroLetter
+  FallbackText: "Merci d'avoir jou\xE9"
 --- !u!114 &1004909308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +80,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Merci d'avoir jou\xE9"
+  m_text: Thanks for playing
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 636cbb62a55921f4db1c7f010324af69, type: 2}
   m_sharedMaterial: {fileID: 6870006173685481826, guid: 636cbb62a55921f4db1c7f010324af69, type: 2}
@@ -914,6 +929,7 @@ GameObject:
   - component: {fileID: 3907690865505695707}
   - component: {fileID: 3907690865505695653}
   - component: {fileID: 3907690865505695652}
+  - component: {fileID: 3161017280576704150}
   - component: {fileID: 3907690865505695706}
   m_Layer: 5
   m_Name: Text
@@ -968,6 +984,23 @@ MonoBehaviour:
   allRevealed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3161017280576704150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3907690865505695704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: IntroLetter
+  FallbackText: "Il ne sortait quasiment plus de chez lui r\xE9cemment. C'\xE9tait
+    \xE9galement un ancien ami. Il n\u2019est plus.\r\n\r\nNe pouvant pas me d\xE9placer
+    sur place, je vous demande d\u2019y aller pour moi. R\xE9cup\xE9rer quelques
+    affaires, juste quelques objets, pour perdurer son souvenir.\r\n\r\nJe vous remercie."
 --- !u!114 &3907690865505695706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,10 +1021,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Il ne sortait quasiment plus de chez lui r\xE9cemment. C'\xE9tait \xE9galement
-    un ancien ami. Il n\u2019est plus.\r\n\r\nNe pouvant pas me d\xE9placer sur place,
-    je vous demande d\u2019y aller pour moi. R\xE9cup\xE9rer quelques affaires, juste
-    quelques objets, pour perdurer son souvenir.\r\n\r\nJe vous remercie."
+  m_text: 'He hardly left his house recently. He was also an old friend. He is no
+    more.
+
+
+
+    Unable to move me there, I ask you to go for me. Collect a few things,
+    just a few items, to last his memory.
+
+
+
+    Thank you.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 636cbb62a55921f4db1c7f010324af69, type: 2}
   m_sharedMaterial: {fileID: 6870006173685481826, guid: 636cbb62a55921f4db1c7f010324af69, type: 2}

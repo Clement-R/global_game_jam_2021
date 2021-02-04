@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Lean.Localization;
+
 using TMPro;
 
 using DG.Tweening;
@@ -16,6 +18,7 @@ public class NarrativePanel : MonoBehaviour
     [SerializeField] private Image m_itemImage;
     [SerializeField] private TextMeshProUGUI m_itemDescription;
     [SerializeField] private CanvasGroup m_group;
+    [SerializeField] private LeanLocalizedBehaviour m_localization;
 
     private bool m_isOpen => m_group.blocksRaycasts;
 
@@ -47,7 +50,8 @@ public class NarrativePanel : MonoBehaviour
             return;
 
         m_itemImage.sprite = p_item.m_image.sprite;
-        m_itemDescription.text = p_item.m_descriptionText;
+        m_localization.TranslationName = p_item.DescriptionKey;
+
         m_group.blocksRaycasts = true;
         m_group.interactable = true;
         m_group.DOFade(1f, 0.25f);
