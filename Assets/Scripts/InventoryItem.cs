@@ -107,6 +107,8 @@ public class InventoryItem : MonoBehaviour
         transform.position = m_basePosition;
         transform.rotation = m_baseRotation;
         ChangeSpriteLayerToGrab(false);
+
+        UpdateShapeOutline(false, true);
     }
 
     private void OnTriggerStay2D(Collider2D p_other)
@@ -258,6 +260,7 @@ public class InventoryItem : MonoBehaviour
         if (PlayerSelection.Instance.SelectedItem != this)
         {
             UpdateOutline(mouseOverObject);
+            UpdateShapeOutline(false, true);
             return;
         }
 
@@ -358,6 +361,8 @@ public class InventoryItem : MonoBehaviour
 
         UpdateShapeOutline(overInventory, canPutInInventory && !colliding);
         if (overInventory)
+        {
             UpdateOutline(false);
+        }
     }
 }
