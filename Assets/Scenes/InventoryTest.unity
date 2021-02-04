@@ -1544,6 +1544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1004909308, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_text
+      value: "Merci d'avoir jou\xE9"
+      objectReference: {fileID: 0}
     - target: {fileID: 1719072583, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_box
       value: 
@@ -1731,6 +1735,14 @@ PrefabInstance:
     - target: {fileID: 3907690865243475235, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3907690865505695706, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_text
+      value: "Il ne sortait quasiment plus de chez lui r\xE9cemment. C'\xE9tait \xE9galement
+        un ancien ami. Il n\u2019est plus.\r\n\r\nNe pouvant pas me d\xE9placer sur
+        place, je vous demande d\u2019y aller pour moi. R\xE9cup\xE9rer quelques
+        affaires, juste quelques objets, pour perdurer son souvenir.\r\n\r\nJe vous
+        remercie."
       objectReference: {fileID: 0}
     - target: {fileID: 3907690865505695707, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_LocalRotation.w
