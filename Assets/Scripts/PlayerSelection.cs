@@ -52,7 +52,7 @@ public class PlayerSelection : MonoBehaviour
         }
         else
         {
-            if (IsMouseOverAClickable())
+            if (IsMouseOverAnItem())
             {
                 // change to pointer
                 m_cursor.sprite = m_pointHand;
@@ -75,18 +75,10 @@ public class PlayerSelection : MonoBehaviour
         m_fakeSelectedItem = p_item;
     }
 
-    private bool IsMouseOverAClickable()
+    private bool IsMouseOverAnItem()
     {
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
-
-        var collisions = Physics2D.OverlapPointAll(mousePosition, Layer);
-        bool mouseOverObject = false;
-        if (collisions.FirstOrDefault(e => e.TryGetComponent<Clickable>(out _)) != null)
-        {
-            mouseOverObject = true;
-        }
-
-        return mouseOverObject;
+        return Physics2D.OverlapPointAll(mousePosition, Layer).Length > 0;
     }
 }
