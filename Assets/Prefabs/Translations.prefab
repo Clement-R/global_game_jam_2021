@@ -1,5 +1,589 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &411745502800920744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7482919398804702131}
+  - component: {fileID: 4297972251766170657}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7482919398804702131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411745502800920744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4297972251766170657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411745502800920744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "Un vieil appareil argentique avec un flash amovible. Je ne sais pas si
+      la personne s\u2019en servait, mais il a l\u2019air fonctionnel encore."
+    Object: {fileID: 0}
+  - Language: English
+    Text: "An old film camera with a removable flash. I don't know if it\u2019s been
+      used recently, but it still looks functional."
+    Object: {fileID: 0}
+--- !u!1 &1376720324379522656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5050112024437380663}
+  - component: {fileID: 7452008088388133860}
+  m_Layer: 0
+  m_Name: Postcard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5050112024437380663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376720324379522656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7452008088388133860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376720324379522656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "Une carte postale dont les bouts sont l\xE9g\xE8rement corn\xE9s. Elle
+      repr\xE9sente un monument somptueux, avec une courte description de vacances
+      ensoleill\xE9es au verso."
+    Object: {fileID: 0}
+  - Language: English
+    Text: The corners of this postcard are a bit worn. A sumptuous european monument
+      is in front, with a short description of a sunny holiday on the back.
+    Object: {fileID: 0}
+--- !u!1 &1519739457398046211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3911541152937218955}
+  - component: {fileID: 9009815547616499909}
+  m_Layer: 0
+  m_Name: FamilyPicture
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3911541152937218955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519739457398046211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9009815547616499909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519739457398046211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "Un cadre contenant une photographie en noir & blanc d\u2019un couple bien
+      habill\xE9. Il s\u2019agit peut-\xEAtre d\u2019un mariage."
+    Object: {fileID: 0}
+  - Language: English
+    Text: A frame containing a black & white photograph of a well-dressed couple.
+      It may be a wedding.
+    Object: {fileID: 0}
+--- !u!1 &1593246435784953462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6224103126508379188}
+  - component: {fileID: 7552285101425612056}
+  m_Layer: 0
+  m_Name: Ukulele
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6224103126508379188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593246435784953462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7552285101425612056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593246435784953462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "Un ukul\xE9l\xE9 bon march\xE9, un peu ray\xE9. Il n\u2019est pas tout
+      neuf et les cordes m\xE9riteraient d\u2019\xEAtre chang\xE9es."
+    Object: {fileID: 0}
+  - Language: English
+    Text: This cheap ukulele is a bit scuffed. It's not brand new and the strings
+      could be changed.
+    Object: {fileID: 0}
+--- !u!1 &3426822731149223894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1823649251083108218}
+  - component: {fileID: 3948233723067579455}
+  m_Layer: 0
+  m_Name: OrigamiSml
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1823649251083108218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426822731149223894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3948233723067579455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426822731149223894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "Je ne sais pas trop ce que repr\xE9sente cet origami. On dirait un sphinx
+      ou une girafe. Il est un peu rat\xE9."
+    Object: {fileID: 0}
+  - Language: English
+    Text: I'm not sure about what this origami represents. It looks like a sphinx
+      or a giraffe. It's a bit of a mess.
+    Object: {fileID: 0}
+--- !u!1 &3959432672574484356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1562982687310632566}
+  - component: {fileID: 4086327178214803702}
+  m_Layer: 0
+  m_Name: OrigamiLg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1562982687310632566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959432672574484356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4086327178214803702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959432672574484356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "C\u2019est un cheval ? Un lama ? Je ne sais pas mais cet origami est vraiment
+      grand, la feuille qui a servi \xE0 sa construction doit \xEAtre immense."
+    Object: {fileID: 0}
+  - Language: English
+    Text: Is it a horse? A llama? I don't know but this origami is really big, the
+      paper sheet that was used to fold it must be huge.
+    Object: {fileID: 0}
+--- !u!1 &5020010857714551832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1712075646862921994}
+  - component: {fileID: 5128749123523371030}
+  m_Layer: 0
+  m_Name: Notebooks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1712075646862921994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020010857714551832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5128749123523371030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020010857714551832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "Plusieurs carnets dont un orn\xE9 d\u2019une \xE9tiquette \"NE PAS LIRE\"
+      \xE9crite au marqueur. C\u2019est peut-\xEAtre important."
+    Object: {fileID: 0}
+  - Language: English
+    Text: Several notebooks, one of which has a "DO NOT READ" label written with
+      a marker. This may be important.
+    Object: {fileID: 0}
+--- !u!1 &6492873937395214869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2698102352415290733}
+  - component: {fileID: 6616830975374325787}
+  m_Layer: 0
+  m_Name: MusicBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2698102352415290733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492873937395214869}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6616830975374325787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492873937395214869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "Son aspect est vieillot mais j\u2019ai l\u2019impression que le m\xE9canisme
+      est r\xE9cent."
+    Object: {fileID: 0}
+  - Language: English
+    Text: This music box is old-fashioned but the mechanism seems to be recent.
+    Object: {fileID: 0}
+--- !u!1 &6559000863774072856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5440984331270203024}
+  - component: {fileID: 2069609236224684557}
+  m_Layer: 0
+  m_Name: ModelBoat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5440984331270203024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6559000863774072856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2069609236224684557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6559000863774072856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "On voit ici et l\xE0 de la colle qui d\xE9passe de cette maquette de bateau.
+      Il va falloir l'emballer et consolider les parties les plus fragiles avant
+      de l'envoyer. Ca a d\xFB prendre un temps fou \xE0 construire, iel y tenait
+      s\xFBrement."
+    Object: {fileID: 0}
+  - Language: English
+    Text: Glue is protruding from between the details of this model ship. If I want
+      to send this, I would have to be patient and careful. It must have taken a
+      lot of time to build it.
+    Object: {fileID: 0}
+--- !u!1 &7440623016777990854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9219478755107005559}
+  - component: {fileID: 4676528734207285043}
+  m_Layer: 0
+  m_Name: PhotoAlbums
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9219478755107005559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440623016777990854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4676528734207285043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440623016777990854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "Ces albums sont lourds mais certaines photos ont l\u2019air anciennes.
+      Sa famille voudra s\xFBrement les r\xE9cup\xE9rer."
+    Object: {fileID: 0}
+  - Language: English
+    Text: These photo albums are heavy but some of the pictures look quite old. Their
+      family will probably be pleased to find them back.
+    Object: {fileID: 0}
+--- !u!1 &7455166688446940063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8885741172963907118}
+  - component: {fileID: 8297498466988650340}
+  m_Layer: 0
+  m_Name: DogToy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8885741172963907118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455166688446940063}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8297498466988650340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455166688446940063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "Un jouet tout ab\xEEm\xE9 qui couine faiblement quand on le comprime."
+    Object: {fileID: 0}
+  - Language: English
+    Text: A damaged toy that squeaks faintly when squeezed.
+    Object: {fileID: 0}
 --- !u!1 &8104203288802070444
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,11 +663,11 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: French
-    Text: Un portefeuille contenant quelques papiers... Je trouvera surement de la
-      place pour le mettre.
+    Text: "Son portefeuille. Peut-\xEAtre qu\u2019il reste quelques-uns de ses papiers
+      \xE0 l\u2019int\xE9rieur."
     Object: {fileID: 0}
   - Language: English
-    Text: A wallet containing some papers ... I'll surely find room for it.
+    Text: Their wallet. Some of their papers may still be inside.
     Object: {fileID: 0}
 --- !u!1 &8104203290071569932
 GameObject:
@@ -131,11 +715,12 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: French
-    Text: "Une grosse cassette VHS. Une ettiquette \"Vacances 2018\" est col\xE9e
-      dessus"
+    Text: "Deux cassettes VHS. Les \xE9tiquettes semblent indiquer qu\u2019il s\u2019agit
+      d\u2019enregistrements de conf\xE9rences sur les math\xE9matiques."
     Object: {fileID: 0}
   - Language: English
-    Text: "A big VHS tape. A \"Holidays 2018\" label is stuck on it\r"
+    Text: Two VHS cassettes. The labels seem to indicate that they are recordings
+      of lectures about mathematics.
     Object: {fileID: 0}
 --- !u!1 &8104203290101861885
 GameObject:
@@ -183,20 +768,18 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: French
-    Text: "Il ne sortait quasiment plus de chez lui r\xE9cemment. C'\xE9tait \xE9galement
-      un ancien ami. Il n\u2019est plus.\r\n\r\nNe pouvant pas me d\xE9placer sur
-      place, je vous demande d\u2019y aller pour moi. R\xE9cup\xE9rer quelques affaires,
-      juste quelques objets, pour perdurer son souvenir.\r\n\r\nJe vous remercie."
+    Text: "Iel ne sortait plus de son appartement r\xE9cemment. Aujourd\u2019hui,
+      mon ami\xB7e n\u2019est plus. Je ne peux pas m\u2019y rendre mais j\u2019aimerais
+      r\xE9cup\xE9rer quelques objets pour entretenir son souvenir. \n\nPouvez-vous
+      me les envoyer ?\n\nEn vous remerciant."
     Object: {fileID: 0}
   - Language: English
-    Text: 'He hardly left his house recently. He was also an old friend. He is no
-      more.
+    Text: 'They weren''t leaving their flat much nowadays. Now my friend is no longer
+      there. I can''t go at the moment but I would like to get some objects back
+      to keep their memory alive.
 
 
-
-      Unable to move me there, I ask you to go for me. Collect a few
-      things, just a few items, to last his memory.
-
+      Can you send me some?
 
 
       Thank you.'
@@ -230,6 +813,18 @@ Transform:
   m_Children:
   - {fileID: 8104203290071569933}
   - {fileID: 8104203289639843658}
+  - {fileID: 5440984331270203024}
+  - {fileID: 6224103126508379188}
+  - {fileID: 7482919398804702131}
+  - {fileID: 429882398939031865}
+  - {fileID: 8885741172963907118}
+  - {fileID: 1712075646862921994}
+  - {fileID: 3911541152937218955}
+  - {fileID: 1562982687310632566}
+  - {fileID: 1823649251083108218}
+  - {fileID: 5050112024437380663}
+  - {fileID: 9219478755107005559}
+  - {fileID: 2698102352415290733}
   m_Father: {fileID: 8104203288802070445}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -279,8 +874,71 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: French
-    Text: "Merci d'avoir jou\xE9"
+    Text: "J\u2019ai bien re\xE7u votre colis.\n*PH*\nMerci encore infiniment de
+      m\u2019avoir permis de c\xE9l\xE9brer la m\xE9moire de notre amiti\xE9 !\nPortez-vous
+      bien."
     Object: {fileID: 0}
   - Language: English
-    Text: Thanks for playing
+    Text: 'I have received your package.
+
+      *PH*
+
+      Thank you so much again,
+      it helped me celebrate the memory of our friendship!
+
+      Take care.'
+    Object: {fileID: 0}
+--- !u!1 &8573437254950202167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429882398939031865}
+  - component: {fileID: 149074407061732484}
+  m_Layer: 0
+  m_Name: ButterflyColl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &429882398939031865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8573437254950202167}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8104203290190950400}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &149074407061732484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8573437254950202167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: "Les sp\xE9cimens sont tr\xE8s beaux, je ne me souviens pas d\u2019avoir
+      d\xE9j\xE0 vu des insectes comme ceux-l\xE0. Le cadre insolite a le m\xE9rite
+      d'\xEAtre fait main."
+    Object: {fileID: 0}
+  - Language: English
+    Text: 'The specimens are very beautiful, I don''t remember ever seeing insects
+      like these. The unusual frame seems to be hand-made. '
     Object: {fileID: 0}
