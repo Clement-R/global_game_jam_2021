@@ -16,7 +16,8 @@ public class Clickable : MonoBehaviour
 
     private void Start()
     {
-        if (m_collider == null) {
+        if (m_collider == null)
+        {
             m_collider = GetComponent<Collider2D>();
         }
     }
@@ -40,7 +41,10 @@ public class Clickable : MonoBehaviour
     {
         bool mouseOverObject = IsMouseOver();
         if (!mouseOverObject)
+        {
+            m_lastMouseDownOver = 0;
             return;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -49,7 +53,7 @@ public class Clickable : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (m_lastMouseDownOver + m_maxFramesBetweenDownAndUp >= Time.frameCount)
+            if (m_lastMouseDownOver != 0 && m_lastMouseDownOver + m_maxFramesBetweenDownAndUp >= Time.frameCount)
             {
                 m_lastMouseDownOver = 0;
                 OnClick?.Invoke();
