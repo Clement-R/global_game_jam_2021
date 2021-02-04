@@ -167,7 +167,7 @@ MonoBehaviour:
   m_descriptionText: Decription
   m_baseLayer: InventoryItem
   m_grabLayer: GrabLayer
-  m_minDistance: 0.5
+  m_minDistance: 0.2
   m_shapeOutline: {fileID: 2019566048013306378}
   m_shapeContainer: {fileID: 3341911271463759112}
   m_shapeBaseColor: {r: 1, g: 1, b: 1, a: 0.60784316}
