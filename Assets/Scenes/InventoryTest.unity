@@ -1394,7 +1394,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1004909308, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_text
-      value: "Merci d'avoir jou\xE9"
+      value: 'I have received your package.
+
+        *PH*
+
+        Thank you so much
+        again, it helped me celebrate the memory of our friendship!
+
+        Take
+        care.'
       objectReference: {fileID: 0}
     - target: {fileID: 1719072583, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_box
@@ -1586,11 +1594,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3907690865505695706, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_text
-      value: "Il ne sortait quasiment plus de chez lui r\xE9cemment. C'\xE9tait \xE9galement
-        un ancien ami. Il n\u2019est plus.\r\n\r\nNe pouvant pas me d\xE9placer sur
-        place, je vous demande d\u2019y aller pour moi. R\xE9cup\xE9rer quelques
-        affaires, juste quelques objets, pour perdurer son souvenir.\r\n\r\nJe vous
-        remercie."
+      value: 'They weren''t leaving their flat much nowadays. Now my friend is no
+        longer there. I can''t go at the moment but I would like to get some objects
+        back to keep their memory alive.
+
+
+        Can you send me some?
+
+
+        Thank
+        you.'
       objectReference: {fileID: 0}
     - target: {fileID: 3907690865505695707, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_LocalRotation.w
