@@ -35,6 +35,12 @@ public class TextRevealer : MonoBehaviour
         originalString = Text.text;
     }
 
+    void Start()
+    {
+        if (string.IsNullOrEmpty(originalString))
+            RestartWithText(Text.text);
+    }
+
     public void Hide()
     {
         Text.text = BuildPartiallyRevealedString(originalString, keyCharIndex: -1, minIndex : 0, maxIndex : 0, fadeLength : 1);
@@ -42,13 +48,20 @@ public class TextRevealer : MonoBehaviour
 
     public void RestartWithText(string strText)
     {
+        isRevealing = false;
         nRevealedCharacters = 0;
         originalString = strText;
         Text.text = BuildPartiallyRevealedString(originalString, keyCharIndex: -1, minIndex : 0, maxIndex : 0, fadeLength : 1);
     }
 
+    public void SetText(string p_text)
+    {
+        originalString = p_text;
+    }
+
     public void Restart()
     {
+        isRevealing = false;
         nRevealedCharacters = 0;
         Text.text = BuildPartiallyRevealedString(originalString, keyCharIndex: -1, minIndex : 0, maxIndex : 0, fadeLength : 1);
         RevealNextParagraphAsync();
@@ -172,12 +185,6 @@ public class TextRevealer : MonoBehaviour
 
         sb.AppendFormat("<color=#00000000>{0}</color>", unrevealed);
         return sb.ToString();
-    }
-
-    void Start()
-    {
-        if (string.IsNullOrEmpty(originalString))
-            RestartWithText(Text.text);
     }
 
 }

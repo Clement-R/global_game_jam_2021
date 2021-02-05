@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.UI;
+
+using Lean.Localization;
 
 using TMPro;
 
@@ -45,6 +48,7 @@ public class UIManager : MonoBehaviour
 
     private bool m_clickToOpenVisible = false;
     private bool m_introLetterOpen = false;
+    private Coroutine m_introRevealRoutine = null;
 
     private void Start()
     {
@@ -54,6 +58,8 @@ public class UIManager : MonoBehaviour
 
         m_clickToOpenText.Hide();
         m_handDragAnimation.gameObject.SetActive(false);
+
+        Lean.Localization.LeanLocalization.OnLocalizationChanged += LanguageChanged;
     }
 
     private void ToOutro()
@@ -140,10 +146,27 @@ public class UIManager : MonoBehaviour
                 m_introLetter.blocksRaycasts = true;
                 m_introLetter.interactable = true;
 
-                StartCoroutine(_RevealIntroLetter());
+                m_introRevealRoutine = StartCoroutine(_RevealIntroLetter());
             }
         );
 
+    }
+
+    private void LanguageChanged()
+    {
+        if (!Application.isPlaying)
+            return;
+
+        if (!RevealIntroDone && m_introLetterOpen)
+        {
+            if (m_introRevealRoutine != null)
+                StopCoroutine(m_introRevealRoutine);
+
+            var loc = m_letterText.GetComponent<LeanLocalizedTextMeshProUGUI>();
+            var text = Lean.Localization.LeanLocalization.GetTranslationText(loc.TranslationName);
+            m_letterText.RestartWithText(text);
+            m_introRevealRoutine = StartCoroutine(_RevealIntroLetter());
+        }
     }
 
     private IEnumerator _RevealIntroLetter()
