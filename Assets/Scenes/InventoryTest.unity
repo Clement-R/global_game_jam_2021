@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 132667184}
   - component: {fileID: 132667183}
   - component: {fileID: 132667182}
+  - component: {fileID: 132667185}
   m_Layer: 5
   m_Name: LeaveButton
   m_TagString: Untagged
@@ -352,8 +353,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.83, y: -4.4}
-  m_SizeDelta: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 4.49, y: -3.7800994}
+  m_SizeDelta: {x: 1.716, y: 1.716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &132667182
 MonoBehaviour:
@@ -374,7 +375,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -384,9 +385,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 0192a5d744c5bd74ab87d8a5a5f3be53, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 0192a5d744c5bd74ab87d8a5a5f3be53, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 0192a5d744c5bd74ab87d8a5a5f3be53, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -419,7 +420,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0192a5d744c5bd74ab87d8a5a5f3be53, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d5b1e2f948476c4db37050c33f6aa96, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -437,6 +438,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132667180}
   m_CullTransparentMesh: 1
+--- !u!114 &132667185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132667180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1311034256}
+          m_TargetAssemblyTypeName: PlayerSelection, Assembly-CSharp
+          m_MethodName: IsOverUI
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1311034256}
+          m_TargetAssemblyTypeName: PlayerSelection, Assembly-CSharp
+          m_MethodName: IsOverUI
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &132782379
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultLanguage: 
+  DefaultLanguage: English
   DetectLanguage: 1
   SaveLanguage: 1
   languages:
@@ -993,7 +1039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Source: {fileID: 0}
-  Language: 
+  Language: English
   Separator: ' = '
   NewLine: \n
   Comment: ' // '
@@ -1394,15 +1440,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1004909308, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_text
-      value: 'I have received your package.
-
-        *PH*
-
-        Thank you so much
-        again, it helped me celebrate the memory of our friendship!
-
-        Take
-        care.'
+      value: "J\u2019ai bien re\xE7u votre colis.\n*PH*\nMerci encore infiniment
+        de m\u2019avoir permis de c\xE9l\xE9brer la m\xE9moire de notre amiti\xE9
+        !\nPortez-vous bien."
       objectReference: {fileID: 0}
     - target: {fileID: 1719072583, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_box
@@ -1598,16 +1638,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3907690865505695706, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_text
-      value: 'They weren''t leaving their flat much nowadays. Now my friend is no
-        longer there. I can''t go at the moment but I would like to get some objects
-        back to keep their memory alive.
-
-
-        Can you send me some?
-
-
-        Thank
-        you.'
+      value: "Iel ne sortait plus de son appartement r\xE9cemment. Aujourd\u2019hui,
+        mon ami\xB7e n\u2019est plus. Je ne peux pas m\u2019y rendre mais j\u2019aimerais
+        r\xE9cup\xE9rer quelques objets pour entretenir son souvenir. \n\nPouvez-vous
+        me les envoyer ?\n\nEn vous remerciant."
       objectReference: {fileID: 0}
     - target: {fileID: 3907690865505695707, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1710,6 +1744,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2f930bda9fe4a42a1fb90f61098c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1282697018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8198440599302848446, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+  m_PrefabInstance: {fileID: 1242343463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1282697023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282697018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1311034256}
+          m_TargetAssemblyTypeName: PlayerSelection, Assembly-CSharp
+          m_MethodName: IsOverUI
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1311034256}
+          m_TargetAssemblyTypeName: PlayerSelection, Assembly-CSharp
+          m_MethodName: IsOverUI
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1288320441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1812,6 +1896,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b2f930bda9fe4a42a1fb90f61098c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1311034256 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3838551810624316113, guid: df35ddc0db59f914fab340d251111d48, type: 3}
+  m_PrefabInstance: {fileID: 3838551811439429176}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf75a23cec8712e4d9de6674b820b5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1413165674
@@ -3158,45 +3253,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 652599c6a691d094d95367a1b5118411, type: 3}
---- !u!1 &5218371766542455991 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5218371766217914669, guid: 652599c6a691d094d95367a1b5118411, type: 3}
-  m_PrefabInstance: {fileID: 5218371766542455990}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5218371766542455992 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5218371766542455992, guid: 652599c6a691d094d95367a1b5118411, type: 3}
-  m_PrefabInstance: {fileID: 5218371766542455990}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5218371766542455991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1fed1b3fff86ae42bc0048882ced63e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5218371766542455993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5218371766542455991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0effe6d59e53f54cab0415578031463, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_clickable: {fileID: 5218371766542455992}
-  m_travelDuration: 0.5
-  m_travelEase: 2
-  m_openPosition: {x: 0, y: -2.25, z: 0}
-  m_closePosition: {x: 0, y: -6.3, z: 0}
 --- !u!114 &5218371766542455994 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6053533910108338301, guid: 652599c6a691d094d95367a1b5118411, type: 3}
   m_PrefabInstance: {fileID: 5218371766542455990}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5218371766542455991}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0effe6d59e53f54cab0415578031463, type: 3}

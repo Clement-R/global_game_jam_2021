@@ -10,6 +10,8 @@ public class PlayerSelection : MonoBehaviour
     public InventoryItem SelectedItem => m_selectedItem;
     public bool HasASelectedItem => m_selectedItem != null || m_fakeSelectedItem != null;
 
+    public bool isOverUI = false;
+
     public LayerMask Layer;
 
     [SerializeField] private SpriteRenderer m_cursor;
@@ -52,7 +54,7 @@ public class PlayerSelection : MonoBehaviour
         }
         else
         {
-            if (IsMouseOverAnItem())
+            if (IsMouseOverAnItem() || isOverUI)
             {
                 // change to pointer
                 m_cursor.sprite = m_pointHand;
@@ -63,6 +65,10 @@ public class PlayerSelection : MonoBehaviour
                 m_cursor.sprite = m_flatHand;
             }
         }
+    }
+
+    public void IsOverUI(bool b) {
+        isOverUI = b;
     }
 
     public void SetSelectedItem(InventoryItem p_item)

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 using TMPro;
 
+using DG.Tweening;
+
 public class TextRevealer : MonoBehaviour
 {
     [UnityEngine.Header("Configuration")]
@@ -44,12 +46,14 @@ public class TextRevealer : MonoBehaviour
     public void Hide()
     {
         Text.text = BuildPartiallyRevealedString(originalString, keyCharIndex: -1, minIndex : 0, maxIndex : 0, fadeLength : 1);
+        Text.alpha = 0; // Gros fix crado
     }
 
     public void RestartWithText(string strText)
     {
         isRevealing = false;
         nRevealedCharacters = 0;
+        Text.alpha = 1; // Gros fix crado
         originalString = strText;
         Text.text = BuildPartiallyRevealedString(originalString, keyCharIndex: -1, minIndex : 0, maxIndex : 0, fadeLength : 1);
     }
@@ -63,6 +67,7 @@ public class TextRevealer : MonoBehaviour
     {
         isRevealing = false;
         nRevealedCharacters = 0;
+        Text.alpha = 1; // Gros fix crado
         Text.text = BuildPartiallyRevealedString(originalString, keyCharIndex: -1, minIndex : 0, maxIndex : 0, fadeLength : 1);
         RevealNextParagraphAsync();
     }
@@ -73,6 +78,7 @@ public class TextRevealer : MonoBehaviour
 
         Text.text = originalString;
         nRevealedCharacters = originalString.Length;
+        Text.alpha = 1; // Gros fix crado
         isRevealing = false;
 
         allRevealed.Invoke();
@@ -166,6 +172,7 @@ public class TextRevealer : MonoBehaviour
 
     private string BuildPartiallyRevealedString(string original, float keyCharIndex, int minIndex, int maxIndex, int fadeLength)
     {
+        Text.alpha = 1; // Gros fix crado
         var lastFullyVisibleChar = Mathf.Max(Mathf.CeilToInt(keyCharIndex), minIndex - 1);
         var firstFullyInvisibleChar = (int) Mathf.Min(keyCharIndex + fadeLength, maxIndex) + 1;
 

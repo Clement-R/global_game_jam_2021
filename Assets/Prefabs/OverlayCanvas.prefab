@@ -1000,10 +1000,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: IntroLetter
-  FallbackText: "Il ne sortait quasiment plus de chez lui r\xE9cemment. C'\xE9tait
-    \xE9galement un ancien ami. Il n\u2019est plus.\r\n\r\nNe pouvant pas me d\xE9placer
-    sur place, je vous demande d\u2019y aller pour moi. R\xE9cup\xE9rer quelques
-    affaires, juste quelques objets, pour perdurer son souvenir.\r\n\r\nJe vous remercie."
+  FallbackText: "Iel ne sortait plus de son appartement r\xE9cemment. Aujourd\u2019hui,
+    mon ami\xB7e n\u2019est plus. Je ne peux pas m\u2019y rendre mais j\u2019aimerais
+    r\xE9cup\xE9rer quelques objets pour entretenir son souvenir.   Pouvez-vous me
+    les envoyer ?  En vous remerciant."
 --- !u!114 &3907690865505695706
 MonoBehaviour:
   m_ObjectHideFlags: 0
