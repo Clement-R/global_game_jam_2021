@@ -62,6 +62,11 @@ public class UIManager : MonoBehaviour
         Lean.Localization.LeanLocalization.OnLocalizationChanged += LanguageChanged;
     }
 
+    private void OnDestroy()
+    {
+        Lean.Localization.LeanLocalization.OnLocalizationChanged -= LanguageChanged;
+    }
+
     private void ToOutro()
     {
         GameManager.Instance.SetGameState(GameState.Outro);

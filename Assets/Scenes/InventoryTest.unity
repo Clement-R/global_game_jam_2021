@@ -1045,6 +1045,76 @@ MonoBehaviour:
   Comment: ' // '
   Cache: 0
   entries: []
+--- !u!1 &708047818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3907690864069546003, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+  m_PrefabInstance: {fileID: 1242343463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &708047819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708047818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: ClickToOpen
+  FallbackText: Cliquez pour lire la lettre
+--- !u!1 &802458449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802458450}
+  - component: {fileID: 802458451}
+  m_Layer: 0
+  m_Name: ClickToOpen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &802458450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802458449}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1978399584}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802458451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802458449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: French
+    Text: Cliquez pour lire la lettre
+    Object: {fileID: 0}
+  - Language: English
+    Text: Click to read the letter
+    Object: {fileID: 0}
 --- !u!1001 &989074760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3031,6 +3101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2f930bda9fe4a42a1fb90f61098c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1978399584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8104203288802070445, guid: 80d4254c138b81540a388e36b185944a, type: 3}
+  m_PrefabInstance: {fileID: 1031847628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2020881973
 GameObject:
   m_ObjectHideFlags: 0

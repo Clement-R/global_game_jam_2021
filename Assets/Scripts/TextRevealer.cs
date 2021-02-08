@@ -34,11 +34,11 @@ public class TextRevealer : MonoBehaviour
     private void Awake()
     {
         Text = GetComponent<TextMeshProUGUI>();
-        originalString = Text.text;
     }
 
     void Start()
     {
+        originalString = Text.text;
         if (string.IsNullOrEmpty(originalString))
             RestartWithText(Text.text);
     }
