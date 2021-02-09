@@ -10,6 +10,8 @@ using Lean.Localization;
 using TMPro;
 
 using DG.Tweening;
+using Random = UnityEngine.Random;
+using System.Text;
 
 public class UIManager : MonoBehaviour
 {
@@ -42,6 +44,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Outro")]
     [SerializeField] private TextMeshProUGUI m_outroLetter;
+    [SerializeField, LeanTranslationName] private string m_outroTradKey;
 
     [Header("Room")]
     [SerializeField] private Button m_toOutroButton;
@@ -49,6 +52,7 @@ public class UIManager : MonoBehaviour
     private bool m_clickToOpenVisible = false;
     private bool m_introLetterOpen = false;
     private Coroutine m_introRevealRoutine = null;
+    private InventoryItem m_randomItem;
 
     private void Start()
     {
@@ -69,7 +73,19 @@ public class UIManager : MonoBehaviour
 
     private void ToOutro()
     {
+        var items = Inventory.Instance.GetItemsInInventory();
+        m_randomItem = items[Random.Range(0, items.Count)];
+        SetOutroLetterText();
+
         GameManager.Instance.SetGameState(GameState.Outro);
+    }
+
+    private void SetOutroLetterText()
+    {
+        var item = LeanLocalization.GetTranslationText($"L_{m_randomItem.DescriptionKey}");
+        var outro = LeanLocalization.GetTranslationText(m_outroTradKey);
+
+        m_outroLetter.text = string.Format(outro, item);
     }
 
     private void Update()
@@ -171,6 +187,11 @@ public class UIManager : MonoBehaviour
             var text = Lean.Localization.LeanLocalization.GetTranslationText(loc.TranslationName);
             m_letterText.RestartWithText(text);
             m_introRevealRoutine = StartCoroutine(_RevealIntroLetter());
+        }
+
+        if (GameManager.Instance.State == GameState.Outro)
+        {
+            SetOutroLetterText();
         }
     }
 
