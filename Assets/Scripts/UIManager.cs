@@ -97,6 +97,10 @@ public class UIManager : MonoBehaviour
         {
             if (Time.time > m_delayBeforeShowText && !m_clickToOpenVisible && !m_introLetterOpen)
             {
+                var loc = m_clickToOpenText.GetComponent<LeanLocalizedTextMeshProUGUI>();
+                var text = Lean.Localization.LeanLocalization.GetTranslationText(loc.TranslationName);
+                m_clickToOpenText.SetText(text);
+
                 m_clickToOpenText.Restart();
                 m_clickToOpenVisible = true;
             }
@@ -200,6 +204,10 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator _RevealIntroLetter()
     {
+        var loc = m_letterText.GetComponent<LeanLocalizedTextMeshProUGUI>();
+        var text = Lean.Localization.LeanLocalization.GetTranslationText(loc.TranslationName);
+        m_letterText.SetText(text);
+
         RevealIntroDone = false;
 
         while (!m_letterText.IsAllRevealed())

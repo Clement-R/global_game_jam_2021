@@ -982,7 +982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultLanguage: English
-  DetectLanguage: 1
+  DetectLanguage: 0
   SaveLanguage: 1
   languages:
   - name: English
@@ -1578,6 +1578,54 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 4566932585933598872, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932585933598872, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932585933598872, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932585933598872, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932585933598872, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932585933598872, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932586175481469, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932586175481469, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932586175481469, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932586175481469, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932586175481469, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566932586175481469, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afbdb4c8e3b2e2f499f928aa7b3828cf, type: 3}
 --- !u!114 &1252692477 stripped
