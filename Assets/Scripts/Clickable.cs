@@ -20,6 +20,11 @@ public class Clickable : MonoBehaviour
         {
             m_collider = GetComponent<Collider2D>();
         }
+
+        if (m_collider == null)
+        {
+            m_collider = GetComponentInChildren<Collider2D>();
+        }
     }
 
     public bool IsMouseOver()

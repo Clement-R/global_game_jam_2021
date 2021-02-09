@@ -54,21 +54,24 @@ public class UIManager : MonoBehaviour
     private Coroutine m_introRevealRoutine = null;
     private InventoryItem m_randomItem;
 
-    private void Start()
+    private IEnumerator Start()
     {
-        m_toOutroButton.onClick.AddListener(ToOutro);
         GameManager.Instance.OnGameStateChange += GameStateChanged;
+
+        m_toOutroButton.onClick.AddListener(ToOutro);
         m_introEnvelopeClickable.OnClick.AddListener(IntroEnvelopeClick);
+
+        LeanLocalization.OnLocalizationChanged += LanguageChanged;
+
+        yield return null;
 
         m_clickToOpenText.Hide();
         m_handDragAnimation.gameObject.SetActive(false);
-
-        Lean.Localization.LeanLocalization.OnLocalizationChanged += LanguageChanged;
     }
 
     private void OnDestroy()
     {
-        Lean.Localization.LeanLocalization.OnLocalizationChanged -= LanguageChanged;
+        LeanLocalization.OnLocalizationChanged -= LanguageChanged;
     }
 
     private void ToOutro()
@@ -208,7 +211,6 @@ public class UIManager : MonoBehaviour
         RevealIntroDone = true;
         m_fakeBox.transform.position = m_inventoryState.ClosePosition;
 
-        //TODO: show drag interaction anim
         m_handDragAnimation.gameObject.SetActive(true);
         m_handDragAnimation.transform.position = m_dragStart;
         m_handDragAnimation.transform.DOMove(m_dragEnd, m_dragAnimDuration)
