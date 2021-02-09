@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.9}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -241, y: 120}
-  m_SizeDelta: {x: 331.99, y: 50}
+  m_AnchoredPosition: {x: -249.4, y: 56.9}
+  m_SizeDelta: {x: 280.8829, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1004909309
 CanvasRenderer:
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Click to read the letter
+  m_text: Cliquez pour lire la lettre
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 636cbb62a55921f4db1c7f010324af69, type: 2}
   m_sharedMaterial: {fileID: 6870006173685481826, guid: 636cbb62a55921f4db1c7f010324af69, type: 2}
@@ -1025,15 +1025,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'They weren''t leaving their flat much nowadays. Now my friend is no longer
-    there. I can''t go at the moment but I would like to get some objects back to
-    keep their memory alive.
-
-
-    Can you send me some?
-
-
-    Thank you.'
+  m_text: "Iel ne sortait plus de son appartement r\xE9cemment. Aujourd\u2019hui,
+    mon ami\xB7e n\u2019est plus. Je ne peux pas m\u2019y rendre mais j\u2019aimerais
+    r\xE9cup\xE9rer quelques objets pour entretenir son souvenir. \n\nPouvez-vous
+    me les envoyer ?\n\nEn vous remerciant."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 636cbb62a55921f4db1c7f010324af69, type: 2}
   m_sharedMaterial: {fileID: 6870006173685481826, guid: 636cbb62a55921f4db1c7f010324af69, type: 2}
